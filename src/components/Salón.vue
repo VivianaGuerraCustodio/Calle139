@@ -31,7 +31,7 @@
           <div>
             <button @click="mostrar_desayuno =! mostrar_desayuno" class="change-view">Desayuno</button>
             <div v-show="mostrar_desayuno">
-              <desayuno :funcionPruebaHijo="datos_desayuno" />
+              <desayuno :item="datos_desayuno" />
             </div>
             <br />
           </div>
@@ -126,7 +126,6 @@ export default {
     },
     datos_desayuno(obj) {
       this.infohijo = obj;
-      localStorage.setItem("input", this.infohijo);
     },
     delete_item(index) {
       this.items.splice(index, 1);

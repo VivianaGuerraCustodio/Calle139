@@ -2,8 +2,10 @@
 <table>
   <tbody>
     <tr v-for="item in items" :key="item">
+      <input type="button" value="+">
       <td>{{item.name}}</td>
       <td>${{item.price}}</td>
+      <input type="button" value="-">
     </tr>
   </tbody>
 </table>
@@ -33,7 +35,7 @@ export default {
       ],
     };
   },
-  props: ["funcionPruebaHijo"],
+  props: ["item"],
 };
 </script>
 <style scope>
