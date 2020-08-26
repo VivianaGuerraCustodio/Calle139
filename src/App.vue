@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view></router-view>
+    <hr />
+    <footer class="footer">
+      <p>Hecho por</p>
+      <p>
+        <a target="_blank" href="https://github.com/VivianaGuerraCustodio">VivianaGuerra</a>
+      </p>
+    </footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  background-size: cover;
+  background-image: url("../src/assets/images/fondo1.jpg");
+  font-family: "Roboto", sans-serif;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.footer {
+  font-size: 1.5em;
+  background-color: rgba(139, 69, 19, 0.438);
+  display: flex;
+  justify-content: center;
+}
+hr {
+  background-color: #73572271;
+  border-bottom: none;
+  height: 4px;
+  margin: 1em 0 3em 3em;
 }
 </style>
