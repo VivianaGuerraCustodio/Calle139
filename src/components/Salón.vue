@@ -6,6 +6,12 @@
         <div class="resumen_pedido">
           <p>Cliente : {{nombre}}</p>
           <p>Mesa : {{mesa}}</p>
+          <div>
+            <p><strong> Resumen de Pedido </strong> </p>
+            <div v-for="info in infohijo" :key="info">
+              <p>{{ info }}</p>
+            </div>
+          </div>
           <p>
             <strong>
               Nota:
@@ -13,12 +19,6 @@
             </strong>
             {{nota_adicional}}
           </p>
-          <div v-for="info in infohijo" :key="info.elem">
-            {{info.elem}}
-            <div>
-              <img @click="delete_item" id="buton_trash" src="../assets/images/trash.png" alt />
-            </div>
-          </div>
         </div>
         <hr />
         <div class="menús">
@@ -31,7 +31,7 @@
           <div>
             <button @click="mostrar_desayuno =! mostrar_desayuno" class="change-view">Desayuno</button>
             <div v-show="mostrar_desayuno">
-              <desayuno :item="datos_desayuno" />
+              <desayuno :selectProduct="datos_desayuno" :remover="datos_desayuno" />
             </div>
             <br />
           </div>
@@ -90,8 +90,8 @@ export default {
       mostrar_durante: false,
       mostrar_bebidas: false,
       mostrar_adicionales: false,
-      infohijo: "",
-      total : 0,
+      infohijo: [],
+      total: 0,
     };
   },
   components: {
@@ -121,14 +121,20 @@ export default {
           this.aviso = "Hubo un error, toma el pedido de nuevo :)";
         });
     },
-    getItem(obj){
+    getItem(obj) {
       this.total = obj.total;
     },
     datos_desayuno(obj) {
-      this.infohijo = obj;
+      [(this.infohijo = obj)];
     },
-    delete_item(index) {
-      this.items.splice(index, 1);
+    remover(producto) {
+      const index = this.seleccion_producto.indexOf(producto);
+      if (index !== -1) {
+        this.seleccion_producto.splice(index, 1);
+      }
+    },
+    selectProduct(producto) {
+      this.infohijo.push(producto);
     },
   },
 };
