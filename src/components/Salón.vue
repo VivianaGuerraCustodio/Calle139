@@ -6,8 +6,6 @@
         <div class="resumen_pedido">
           <p>Cliente : {{nombre}}</p>
           <p>Mesa : {{mesa}}</p>
-
-          <br />
           <div>
             <p><strong>Resumen de Pedido</strong></p>
             <div class="resumen" v-for="info in infohijo" :key="info">
