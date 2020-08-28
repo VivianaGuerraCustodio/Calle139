@@ -8,20 +8,14 @@
           <p>Mesa : {{mesa}}</p>
 
           <br />
-          <div class="resumen">
-          <table>
-            <tbody>
-              <th>
-                Resumen de Pedido
-              </th>
-              <tr v-for="info in infohijo" :key="info">
-                <td>{{ info.name }}</td>
-                <td>${{ info.price }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div>
+            <p><strong>Resumen de Pedido</strong></p>
+            <div class="resumen" v-for="info in infohijo" :key="info">
+              <p class="item">{{ info.name }}</p>
+              <p class="item"> ${{ info.price }}</p>
+            </div>
           </div>
-          <p>
+          <p v-if="nota_adicional">
             <strong>
               Nota:
               <br />
@@ -126,6 +120,7 @@ export default {
         })
         .then(() => {
           this.aviso = "Se envió el pedido a cocina";
+          this.infohijo="";
           this.cliente = "";
           this.mesa = "";
           this.resumen_pedido = "";
@@ -135,17 +130,16 @@ export default {
           this.aviso = "Hubo un error, toma el pedido de nuevo :)";
         });
     },
-    getItem(obj) {
-      this.total = obj.total;
-    },
     remover(producto) {
       const index = this.infohijo.indexOf(producto);
       if (index !== -1) {
         this.infohijo.splice(index, 1);
+        this.total = this.total - producto.price;
       }
     },
     selectProduct(producto) {
       this.infohijo.push(producto);
+      this.total = this.total + producto.price;
     },
   },
 };
@@ -171,7 +165,12 @@ export default {
   margin: auto;
 }
 .resumen{
-  padding: 1em 0em 1em 6em;
+  display: block ruby;
+}
+
+.item{
+  padding: 0em 1em 1em 1em;
+  margin:0;
 }
 .resumen_pedido {
   display: block;
