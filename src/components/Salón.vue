@@ -115,14 +115,10 @@ export default {
           nota: this.nota_adicional,
           hora_pedido: firebase.firestore.FieldValue.serverTimestamp(),
           hora_envio_salon: "",
+          pago_total: this.total,
         })
         .then(() => {
           this.aviso = "Se envió el pedido a cocina";
-          this.infohijo="";
-          this.cliente = "";
-          this.mesa = "";
-          this.resumen_pedido = "";
-          this.nota_adicional = "";
         })
         .catch(() => {
           this.aviso = "Hubo un error, toma el pedido de nuevo :)";
