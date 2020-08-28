@@ -6,11 +6,20 @@
         <div class="resumen_pedido">
           <p>Cliente : {{nombre}}</p>
           <p>Mesa : {{mesa}}</p>
-          <div>
-            <p><strong> Resumen de Pedido </strong> </p>
-            <div v-for="info in infohijo" :key="info">
-              <p>{{ info }}</p>
-            </div>
+
+          <br />
+          <div class="resumen">
+          <table>
+            <tbody>
+              <th>
+                Resumen de Pedido
+              </th>
+              <tr v-for="info in infohijo" :key="info">
+                <td>{{ info.name }}</td>
+                <td>${{ info.price }}</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
           <p>
             <strong>
@@ -31,18 +40,18 @@
           <div>
             <button @click="mostrar_desayuno =! mostrar_desayuno" class="change-view">Desayuno</button>
             <div v-show="mostrar_desayuno">
-              <desayuno :selectProduct="datos_desayuno" :remover="datos_desayuno" />
+              <desayuno :selectProduct="selectProduct" :remover="remover" />
             </div>
             <br />
           </div>
           <button @click="mostrar_durante=! mostrar_durante" class="change-view">Durante el día</button>
           <div v-if="mostrar_durante">
-            <hamburguesas @getValues="setValues" />
+            <hamburguesas :selectProduct="selectProduct" :remover="remover" />
           </div>
           <br />
           <button @click="mostrar_bebidas=!mostrar_bebidas" class="change-view">Bebidas</button>
           <div v-if="mostrar_bebidas">
-            <bebidas />
+            <bebidas :selectProduct="selectProduct" :remover="remover" />
           </div>
           <br />
           <button
@@ -51,7 +60,7 @@
             class="change-view"
           >Adicionales</button>
           <div v-if="mostrar_adicionales">
-            <adicionales />
+            <adicionales :selectProduct="selectProduct" :remover="remover" />
           </div>
           <br />
           <p>¿Desea añadir una nota?</p>
@@ -110,12 +119,17 @@ export default {
           cliente: this.nombre,
           mesa: this.mesa,
           status: "pendiente",
+          resumen_de_pedido: this.infohijo,
           nota: this.nota_adicional,
           hora_pedido: firebase.firestore.FieldValue.serverTimestamp(),
           hora_envio_salon: "",
         })
         .then(() => {
           this.aviso = "Se envió el pedido a cocina";
+          this.cliente = "";
+          this.mesa = "";
+          this.resumen_pedido = "";
+          this.nota_adicional = "";
         })
         .catch(() => {
           this.aviso = "Hubo un error, toma el pedido de nuevo :)";
@@ -124,13 +138,10 @@ export default {
     getItem(obj) {
       this.total = obj.total;
     },
-    datos_desayuno(obj) {
-      [(this.infohijo = obj)];
-    },
     remover(producto) {
-      const index = this.seleccion_producto.indexOf(producto);
+      const index = this.infohijo.indexOf(producto);
       if (index !== -1) {
-        this.seleccion_producto.splice(index, 1);
+        this.infohijo.splice(index, 1);
       }
     },
     selectProduct(producto) {
@@ -158,6 +169,9 @@ export default {
   display: flex;
   flex-direction: row;
   margin: auto;
+}
+.resumen{
+  padding: 1em 0em 1em 6em;
 }
 .resumen_pedido {
   display: block;

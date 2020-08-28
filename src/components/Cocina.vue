@@ -3,16 +3,22 @@
     <navegador />
     <div class="contenedor_de_pedidos">
       <h3 class="subtitulo">Pedidos por hacer</h3>
-      <div class="pedidos" v-for="pedido in info_pedido" :key="pedido.id">
-        <p>{{pedido.cliente}}</p>
-        <input @click="enviar_salon" type="button" class="change-view" value="Enviar a Salón" />
-      </div>
+      <table>
+        <tbody>
+          <th>Resumen de Pedido</th>
+          <tr v-for="pedido in info_pedido" :key="pedido">
+            <td>Cliente : {{pedido.cliente}}</td>
+            <td><strong>Resumen de Pedido</strong></td>
+            <td>{{pedido.resumen_de_pedido.name}}</td>
+            <td>{{pedido.resumen_de_pedido.price}}</td>
+            <input @click="enviar_salon" type="button" class="change-view" value="Enviar a Salón" />
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="pedidos_hechos">
-      <input @click="ver_pedidos" class="subtitulo" type="button" value="Pedidos Terminados">
-      <div>
-
-      </div>
+      <input @click="ver_pedidos" class="subtitulo" type="button" value="Pedidos Terminados" />
+      <div></div>
     </div>
   </div>
 </template>
@@ -27,7 +33,7 @@ export default {
   data() {
     return {
       info_pedido: [],
-      pedidos_terminados : [],
+      pedidos_terminados: [],
     };
   },
   mounted() {

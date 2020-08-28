@@ -2,8 +2,14 @@
 <table>
   <tbody>
     <tr v-for="item in items" :key="item">
+        <td>
+        <input @click="selectProduct(item)" type="button" value="+" />
+      </td>
       <td>{{item.name}}</td>
       <td>${{item.price}}</td>
+        <td>
+        <input @click="remover(item)" type="button" value="-" />
+      </td>
     </tr>
   </tbody>
 </table>
@@ -32,6 +38,7 @@ export default {
                 }
             ]
         }
-    }
+    },
+    props: ["selectProduct", "remover"],
 }
 </script>
