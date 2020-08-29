@@ -3,18 +3,14 @@
     <navegador />
     <div class="contenedor_de_pedidos">
       <h3 class="subtitulo">Pedidos por hacer</h3>
-      <table>
-        <tbody>
-          <th>Resumen de Pedido</th>
-          <tr v-for="pedido in info_pedido" :key="pedido">
-            <td>Cliente : {{pedido.cliente}}</td>
-            <td><strong>Resumen de Pedido</strong></td>
-            <td>{{pedido.resumen_de_pedido.name}}</td>
-            <td>{{pedido.resumen_de_pedido.price}}</td>
-            <input @click="enviar_salon" type="button" class="change-view" value="Enviar a Salón" />
-          </tr>
-        </tbody>
-      </table>
+      <div v-for="pedido in info_pedido" :key="pedido">
+        <div class="cuadro_pedido">
+        <p>Cliente : {{pedido.cliente}}</p>
+        <p>Hora de pedido :{{pedido.hora_pedido}}</p>
+        <p>Resumen de pedido : {{pedido.resumen_de_pedido}}</p>
+        <input @click="enviar_salon" type="button" class="change-view" value="Enviar a Salón" />
+      </div>
+      </div>
     </div>
     <div class="pedidos_hechos">
       <input @click="ver_pedidos" class="subtitulo" type="button" value="Pedidos Terminados" />
@@ -32,7 +28,7 @@ export default {
   },
   data() {
     return {
-      info_pedido: [],
+      info_pedido: "",
       pedidos_terminados: [],
     };
   },
@@ -107,6 +103,12 @@ export default {
 }
 .pedidos {
   flex: auto;
+}
+.cuadro_pedido{
+  background-color: #fce84f8c;
+  padding: 1em;
+  margin:2em;
+  border-radius:0.5em;
 }
 .change-view {
   background-color: rgba(85, 75, 75, 0.39);
