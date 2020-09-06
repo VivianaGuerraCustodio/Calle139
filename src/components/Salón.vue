@@ -11,6 +11,7 @@
             <div class="resumen" v-for="info in infohijo" :key="info">
               <p class="item">{{ info.name }}</p>
               <p class="item"> ${{ info.price }}</p>
+              <input @click="remover(info)" class="trash" type="button" >
             </div>
           </div>
           <p v-if="nota_adicional">
@@ -65,8 +66,8 @@
         <button @click.prevent="enviar_cocina" class="change-view">Enviar a cocina</button>
       </div>
       <br />
-      <p v-if="enviar_cocina" class="avisoCorrecto margen">{{aviso}}</p>
-      <p v-else class="avisoIncorrecto margen">{{aviso}}</p>
+      <p >{{aviso}}</p>
+      <!--<p v-else class="avisoIncorrecto margen">{{aviso}}</p>-->
     </div>
   </div>
 </template>
@@ -161,7 +162,14 @@ export default {
 .resumen{
   display: block ruby;
 }
-
+.trash{
+  border:none;
+  background-image: url('~@/assets/images/trash.png');
+  background-color:transparent;
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+}
 .item{
   padding: 0em 1em 1em 1em;
   margin:0;
@@ -174,7 +182,6 @@ export default {
   padding: 3% 8%;
 }
 .menús {
-  margin: 3% 6% 3% 3%;
   padding: 25px;
 }
 .contenedor_pedido .envio_cocina {
@@ -199,3 +206,4 @@ export default {
   width: 1.4em;
 }
 </style>
+/* plazo 24horas 166178075 servicio 201149446 */

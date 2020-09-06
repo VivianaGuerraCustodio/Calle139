@@ -3,8 +3,8 @@
     <router-view></router-view>
     <hr />
     <footer class="footer">
-      <p>Hecho por</p>
       <p>
+        Hecho por
         <a target="_blank" href="https://github.com/VivianaGuerraCustodio">VivianaGuerra</a>
       </p>
     </footer>
@@ -14,7 +14,6 @@
 <script>
 export default {
   name: "App",
-  components: {},
 };
 </script>
 

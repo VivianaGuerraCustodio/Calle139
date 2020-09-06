@@ -20,7 +20,6 @@ export default {
   name: "desayuno",
   data() {
     return {
-      // seleccion_producto: [],
       items: [
         {
           name: "Café americano",

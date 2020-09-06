@@ -6,9 +6,9 @@
       <div v-for="pedido in info_pedido" :key="pedido">
         <div class="cuadro_pedido">
         <p>Cliente : {{pedido.cliente}}</p>
-        <p>Hora de pedido :{{pedido.hora_pedido}}</p>
+        <p>Hora de pedido :{{(new Date().getTime(pedido.hora_pedido))}}</p>
         <p>Resumen de pedido : {{pedido.resumen_de_pedido}}</p>
-        <input @click="enviar_salon" type="button" class="change-view" value="Enviar a Salón" />
+        <input @click="enviar_salon(pedido)" type="button" class="change-view" value="Enviar a Salón" />
       </div>
       </div>
     </div>
@@ -49,15 +49,18 @@ export default {
   },
   methods: {
     enviar_salon() {
+      const index = this.info_pedido.indexOf();
+      if (index !== -1){
       const db = firebase.firestore();
       const pedidos = this.info_pedido;
-      // const hora =  firebase.firestore.FieldValue.serverTimestamp();
       pedidos.forEach((doc) => {
         db.collection("pedidos").doc(doc.id).update({
           hora_envio_salon: firebase.firestore.FieldValue.serverTimestamp(),
           status: "terminado",
         });
       });
+      }
+
     },
     ver_pedidos() {
       const db = firebase.firestore();

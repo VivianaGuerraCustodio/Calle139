@@ -50,13 +50,16 @@ p{
   font-size: 3em;
 }
 .change-view {
-  background-color: rgba(85, 75, 75, 0.39);
-  border-radius: 0.2em;
-  border-style: none;
-  outline: none;
+  background-image: url('~@/assets/images/brochas.png');
+  background-color: transparent;
+  border: none;
   font-size: 2em;
-  margin: 1em;
-  padding: 0.5em 1em 0.5em 1em;
+  margin-top: 0.5em;
+  width:7em;
+  height: 1.7em;
+  background-size: cover;
+  opacity: 0.9;
+  color:darkgrey;
 }
 .logo {
   width: 40%;
