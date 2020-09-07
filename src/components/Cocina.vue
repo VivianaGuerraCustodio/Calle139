@@ -6,7 +6,7 @@
       <div v-for="pedido in info_pedido" :key="pedido">
         <div class="cuadro_pedido">
         <p>Cliente : {{pedido.cliente}}</p>
-        <p>Hora de pedido :{{(new Date().getTime(pedido.hora_pedido))}}</p>
+        <p>Hora de pedido :{{new Date(pedido.hora_pedido*1000)}}</p>
         <p>Resumen de pedido : {{pedido.resumen_de_pedido}}</p>
         <input @click="enviar_salon(pedido)" type="button" class="change-view" value="Enviar a Salón" />
       </div>

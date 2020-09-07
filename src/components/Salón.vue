@@ -7,11 +7,14 @@
           <p>Cliente : {{nombre}}</p>
           <p>Mesa : {{mesa}}</p>
           <div>
-            <p><strong>Resumen de Pedido</strong></p>
+            <p>
+              <strong>Resumen de Pedido</strong>
+            </p>
             <div class="resumen" v-for="info in infohijo" :key="info">
+              <p class="item">{{cantidad}}</p>
               <p class="item">{{ info.name }}</p>
-              <p class="item"> ${{ info.price }}</p>
-              <input @click="remover(info)" class="trash" type="button" >
+              <p class="item">${{ info.price }}</p>
+              <input @click="remover(info)" class="trash" type="button" />
             </div>
           </div>
           <p v-if="nota_adicional">
@@ -66,7 +69,7 @@
         <button @click.prevent="enviar_cocina" class="change-view">Enviar a cocina</button>
       </div>
       <br />
-      <p >{{aviso}}</p>
+      <p>{{aviso}}</p>
       <!--<p v-else class="avisoIncorrecto margen">{{aviso}}</p>-->
     </div>
   </div>
@@ -88,12 +91,13 @@ export default {
       mesa: "",
       nota_adicional: "",
       aviso: "",
+      cantidad: "",
       mostrar_desayuno: false,
       mostrar_durante: false,
       mostrar_bebidas: false,
       mostrar_adicionales: false,
       infohijo: [],
-      total: 0,
+      total: 0
     };
   },
   components: {
@@ -101,7 +105,7 @@ export default {
     Desayuno,
     Adicionales,
     Bebidas,
-    Hamburguesas,
+    Hamburguesas
   },
   methods: {
     enviar_cocina() {
@@ -116,7 +120,7 @@ export default {
           nota: this.nota_adicional,
           hora_pedido: firebase.firestore.FieldValue.serverTimestamp(),
           hora_envio_salon: "",
-          pago_total: this.total,
+          pago_total: this.total
         })
         .then(() => {
           this.aviso = "Se envió el pedido a cocina";
@@ -133,10 +137,22 @@ export default {
       }
     },
     selectProduct(producto) {
-      this.infohijo.push(producto);
+      /* const index = this.infohijo.indexOf(producto);
+      if (index !== -1) {
+        this.infohijo.push(index);
+        this.total = this.total + producto.price;
+        this.cantidad = this.infohijo.length();
+      }
+       if(producto){
+        this.cantidad = this.cantidad + producto.
+      }  */
+      const pop = this.infohijo.push(producto);
+      if (pop.length > 0 && this.pop.indexOf(producto)) {
+        this.cantidad = this.cantidad + 1;
+      }
       this.total = this.total + producto.price;
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
@@ -159,20 +175,20 @@ export default {
   flex-direction: row;
   margin: auto;
 }
-.resumen{
+.resumen {
   display: block ruby;
 }
-.trash{
-  border:none;
-  background-image: url('~@/assets/images/trash.png');
-  background-color:transparent;
+.trash {
+  border: none;
+  background-image: url("~@/assets/images/trash.png");
+  background-color: transparent;
   width: 25px;
   height: 25px;
   background-size: cover;
 }
-.item{
+.item {
   padding: 0em 1em 1em 1em;
-  margin:0;
+  margin: 0;
 }
 .resumen_pedido {
   display: block;
