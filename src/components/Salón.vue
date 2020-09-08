@@ -91,7 +91,7 @@ export default {
       mesa: "",
       nota_adicional: "",
       aviso: "",
-      cantidad: "",
+      cantidad: 0,
       mostrar_desayuno: false,
       mostrar_durante: false,
       mostrar_bebidas: false,
@@ -137,23 +137,30 @@ export default {
       }
     },
     selectProduct(producto) {
-      /* const index = this.infohijo.indexOf(producto);
-      if (index !== -1) {
-        this.infohijo.push(index);
-        this.total = this.total + producto.price;
-        this.cantidad = this.infohijo.length();
-      }
-       if(producto){
-        this.cantidad = this.cantidad + producto.
-      }  */
-      const pop = this.infohijo.push(producto);
-      if (pop.length > 0 && this.pop.indexOf(producto)) {
-        this.cantidad = this.cantidad + 1;
-      }
+      this.infohijo.push(producto);
       this.total = this.total + producto.price;
+      // this.cantidad = +1;
     }
   }
 };
+/*
+añadirCompra(){
+  this.infohijo.push(producto);
+  calcularTotal();
+  renderizarCarrito();
+}
+renderizarCarrito(){
+  let sinDuplicados=[.. new Set(producto)];
+  sinDuplicados.forEach(function(item,indice){
+    let miProdcuto = this.infohijo.filter(function(productoinBD){
+      return productoinBD['producto.name] === item;
+    });
+    let numeroItem = this.infohijo.reduce(function(total, itemName){
+      return itemName === item ? this.cantidad += 1 : this.cantidad;
+    },0);
+  })
+}
+*/
 </script>
 <style scoped>
 .change-view {
