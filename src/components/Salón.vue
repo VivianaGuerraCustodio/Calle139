@@ -136,30 +136,38 @@ export default {
         this.total = this.total - producto.price;
       }
     },
+
     selectProduct(producto) {
       this.infohijo.push(producto);
       this.total = this.total + producto.price;
-      // this.cantidad = +1;
+      // aqui tengo todos los elementos que voy seleccionando
+      // en un array , pero no se repiten asi seleccione varias veces el mismo producto
+      let sinDuplicado = [...new Set(this.infohijo)];
+      console.log(sinDuplicado.length)
+      // this.cantidad = sinDupla.length;
+       if (sinDuplicado.length > 1) var cantidad = +1;
+       console.log(cantidad)
+      // let search = sinDupla.find(name, this.infohijo.name);
+      // console.log(search);
+      console.log(sinDuplicado);
+      for (let item of sinDuplicado) {
+        //this.cantidad = +1;
+        console.log(item);
+      }
     }
   }
 };
 /*
-añadirCompra(){
-  this.infohijo.push(producto);
-  calcularTotal();
-  renderizarCarrito();
-}
-renderizarCarrito(){
-  let sinDuplicados=[.. new Set(producto)];
-  sinDuplicados.forEach(function(item,indice){
-    let miProdcuto = this.infohijo.filter(function(productoinBD){
-      return productoinBD['producto.name] === item;
-    });
-    let numeroItem = this.infohijo.reduce(function(total, itemName){
-      return itemName === item ? this.cantidad += 1 : this.cantidad;
-    },0);
-  })
-}
+computed: {
+        qtyCart(){
+            var busqueda = _.find(this.shared.cart, ['id',this.producto.id])
+            if(typeof busqueda == 'object'){
+               return busqueda.qty
+            }else{
+              return 0;
+            }
+        }
+    },
 */
 </script>
 <style scoped>
