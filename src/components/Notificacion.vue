@@ -2,9 +2,17 @@
   <div>
     <div class="contenedor_general">
       <label class="listado-pendientes">
-        <li v-for="pedido in pendientes" :key="pedido.id">{{pedido.cliente}}</li>
+        <ol v-for="pedido in pendientes" :key="pedido.id">
+          <li>
+            {{pedido.cliente}}
+            <input
+              @click="()=>guardar_pedidos(pedido)"
+              type="button"
+              value="✌Entregados 💾"
+            />
+          </li>
+        </ol>
       </label>
-      <input @click="guardar_pedidos" type="button" value="✌Entregados 💾" />
     </div>
   </div>
 </template>
@@ -15,39 +23,37 @@ export default {
   components: {},
   data() {
     return {
-      pendientes: [],
+      pendientes: []
     };
   },
   mounted() {
     const db = firebase.firestore();
     db.collection("pedidos")
       .where("status", "==", "terminado")
-      .onSnapshot((querySnapshot) => {
+      .onSnapshot(querySnapshot => {
         const orders = [];
-        querySnapshot.forEach(function (doc) {
+        querySnapshot.forEach(function(doc) {
           orders.push({
             id: doc.id,
-            ...doc.data(),
+            ...doc.data()
           });
         });
         this.pendientes = orders;
       });
   },
   methods: {
-    guardar_pedidos() {
+    guardar_pedidos(pedido) {
+      console.log(pedido);
       const db = firebase.firestore();
-      const pedidos = this.pendientes;
-      // const hora =  firebase.firestore.FieldValue.serverTimestamp();
-      console.log(pedidos)
-      pedidos.forEach((doc) => {
-        console.log(doc.id);
-        db.collection("pedidos").doc(doc.id).update({
+      //const pedidos = this.pendientes;
+      db.collection("pedidos")
+        .doc(pedido.id)
+        .update({
           hora_entrega_cliente: firebase.firestore.FieldValue.serverTimestamp(),
-          status: "entregado",
+          status: "entregado"
         });
-      });
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
