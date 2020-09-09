@@ -5,16 +5,25 @@
       <h3 class="subtitulo">Pedidos por hacer</h3>
       <div v-for="pedido in info_pedido" :key="pedido">
         <div class="cuadro_pedido">
-        <p>Cliente : {{pedido.cliente}}</p>
-        <p>Hora de pedido :{{new Date(pedido.hora_pedido*1000)}}</p>
-        <p>Resumen de pedido : {{pedido.resumen_de_pedido}}</p>
-        <input @click="enviar_salon(pedido)" type="button" class="change-view" value="Enviar a Salón" />
-      </div>
+          <p>Cliente : {{pedido.cliente}}</p>
+          <p>Hora de pedido :{{new Date(pedido.hora_pedido*1000)}}</p>
+          <ol>Resumen de pedido : {{pedido.resumen_de_pedido}}</ol>
+          <li></li>
+          <input
+            @click="()=>enviar_salon(pedido)"
+            type="button"
+            class="change-view"
+            value="Enviar a Salón"
+          />
+        </div>
       </div>
     </div>
-    <div class="pedidos_hechos">
-      <input @click="ver_pedidos" class="subtitulo" type="button" value="Pedidos Terminados" />
-      <div></div>
+    <div class="contenedor_de_pedidos">
+      <h3 class="subtitulo">Pedidos terminados</h3>
+      <div class="cuadro_pedido" v-for="pedido in pedidos_terminados" :key="pedido">
+        <p>{{pedido.cliente}}</p>
+        <p>{{new Date(pedido.hora_envio_salon*1000)}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,60 +33,57 @@ import firebase from "firebase";
 export default {
   name: "Cocina",
   components: {
-    Navegador,
+    Navegador
   },
   data() {
     return {
       info_pedido: "",
-      pedidos_terminados: [],
+      pedidos_terminados: "",
+      options : { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
+
     };
   },
   mounted() {
     const db = firebase.firestore();
     db.collection("pedidos")
       .where("status", "==", "pendiente")
-      .onSnapshot((querySnapshot) => {
+      .onSnapshot(querySnapshot => {
         const orders = [];
-        querySnapshot.forEach(function (doc) {
+        querySnapshot.forEach(function(doc) {
           orders.push({
             id: doc.id,
-            ...doc.data(),
+            ...doc.data()
           });
         });
         this.info_pedido = orders;
       });
+    //const db = firebase.firestore();
+    db.collection("pedidos")
+      .where("status", "==", "entregado")
+      .onSnapshot(querySnapshot => {
+        const orders = [];
+        querySnapshot.forEach(function(doc) {
+          orders.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+        this.pedidos_terminados = orders;
+      });
   },
   methods: {
-    enviar_salon() {
-      const index = this.info_pedido.indexOf();
-      if (index !== -1){
-      const db = firebase.firestore();
-      const pedidos = this.info_pedido;
-      pedidos.forEach((doc) => {
-        db.collection("pedidos").doc(doc.id).update({
-          hora_envio_salon: firebase.firestore.FieldValue.serverTimestamp(),
-          status: "terminado",
-        });
-      });
-      }
-
-    },
-    ver_pedidos() {
+    enviar_salon(pedido) {
+      console.log(pedido);
       const db = firebase.firestore();
       db.collection("pedidos")
-        .where("status", "==", "entregado")
-        .onSnapshot((querySnapshot) => {
-          const orders = [];
-          querySnapshot.forEach(function (doc) {
-            orders.push({
-              id: doc.id,
-              ...doc.data(),
-            });
-          });
-          this.pedidos_terminados = orders;
+        .doc(pedido.id)
+        .update({
+          hora_envio_salon: firebase.firestore.FieldValue.serverTimestamp(),
+          status: "terminado",
+          tiempo: this.hora_pedido - this.hora_envio_salon
         });
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
@@ -107,11 +113,11 @@ export default {
 .pedidos {
   flex: auto;
 }
-.cuadro_pedido{
+.cuadro_pedido {
   background-color: #fce84f8c;
   padding: 1em;
-  margin:2em;
-  border-radius:0.5em;
+  margin: 2em;
+  border-radius: 0.5em;
 }
 .change-view {
   background-color: rgba(85, 75, 75, 0.39);
