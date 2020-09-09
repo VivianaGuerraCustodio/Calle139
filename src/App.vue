@@ -13,12 +13,14 @@
 
 <script>
 export default {
-  name: "App",
+  name: "App"
 };
 </script>
 
 <style>
 body {
+  height: 100vh;
+  width: 100vw;
   background-size: cover;
   background-image: url("../src/assets/images/fondo1.jpg");
   font-family: "Roboto", sans-serif;
