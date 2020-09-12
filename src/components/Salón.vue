@@ -139,6 +139,23 @@ export default {
 
     selectProduct(producto) {
       this.infohijo.push(producto);
+      console.log(this.infohijo);
+      for (let item in this.infohijo) {
+        console.log(this.infohijo[item]);
+      }
+      /* 
+        let items = [];
+      items.push(producto);
+      for (const item in items) {
+        console.log(item);
+        console.log(items)
+        if (item == item) {
+          this.cantidad = +1;
+        } else {
+          this.infohijo.push();
+        }*/
+    }
+    /*this.infohijo.push(producto);
       this.total = this.total + producto.price;
       // aqui tengo todos los elementos que voy seleccionando
       // en un array , pero no se repiten asi seleccione varias veces el mismo producto
@@ -153,10 +170,20 @@ export default {
       for (let item of sinDuplicado) {
         //this.cantidad = +1;
         console.log(item);
-      }
-    }
+      }*/
   }
 };
+/* 
+let items = [];
+this.items.push(producto)
+for ( item in items){
+  if( item == item ){
+    this. cantidad = +1;
+  } else {
+    this.infohijo.push();
+  }
+}
+*/
 /*
 computed: {
         qtyCart(){
