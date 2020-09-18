@@ -4,6 +4,7 @@ import router from './router';
 
 Vue.config.productionTip = false;
 import firebase from 'firebase'
+import './registerServiceWorker'
 var firebaseConfig = {
   apiKey: "AIzaSyChMZJ5MJGJseeu5IWtPMr_vuxKJxno-MM",
   authDomain: "calle139.firebaseapp.com",
