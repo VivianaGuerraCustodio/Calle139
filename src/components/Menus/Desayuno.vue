@@ -24,24 +24,26 @@ export default {
         {
           name: "Café americano",
           price: 5,
+          qtt: ""
         },
         {
           name: "Sándwich",
           price: 10,
+          qtt: ""
         },
         {
           name: "Café con leche",
           price: 7,
+          qtt: ""
         },
         {
           name: "Jugo de frutas",
           price: 7,
-        },
-      ],
+          qtt: ""
+        }
+      ]
     };
   },
-  props: ["selectProduct", "remover"],
+  props: ["selectProduct", "remover"]
 };
 </script>
-<style scope>
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor_general">
+  <div>
     <navegador />
     <div class="pedido_total">
       <section class="contenedor_pedido">
@@ -11,7 +11,7 @@
               <strong>Resumen de Pedido</strong>
             </p>
             <div class="resumen" v-for="info in infohijo" :key="info">
-              <p class="item">{{cantidad}}</p>
+              <p class="item">{{ info.cantidad }}</p>
               <p class="item">{{ info.name }}</p>
               <p class="item">${{ info.price }}</p>
               <input @click="remover(info)" class="trash" type="button" />
@@ -35,7 +35,7 @@
           </p>
           <div>
             <button @click="mostrar_desayuno =! mostrar_desayuno" class="change-view">Desayuno</button>
-            <div v-show="mostrar_desayuno">
+            <div v-if="mostrar_desayuno">
               <desayuno :selectProduct="selectProduct" :remover="remover" />
             </div>
             <br />
@@ -91,12 +91,13 @@ export default {
       mesa: "",
       nota_adicional: "",
       aviso: "",
-      cantidad: 0,
       mostrar_desayuno: false,
       mostrar_durante: false,
       mostrar_bebidas: false,
       mostrar_adicionales: false,
       infohijo: [],
+      lol: [],
+      cart: [],
       total: 0
     };
   },
@@ -139,11 +140,67 @@ export default {
 
     selectProduct(producto) {
       this.infohijo.push(producto);
+      this.total += producto.price;
+      let found = false;
       console.log(this.infohijo);
-      for (let item in this.infohijo) {
+      for (var item in this.infohijo) {
+        if ((item.id === producto.name).length > 1) {
+          console.log("producto repetido");
+          found = true;
+          producto.cantidad++;
+          console.log(this.cantidad);
+          break;
+        }
+      }
+      if (!found) {
+        this.cart.push({
+          producto
+        });
+        console.log(this.cart);
+      }
+    }
+  }
+  /*const item = this.lol[producto];
+      console.log(item);
+      this.total += producto.price;
+      let found = false;
+      for (var i = 0; i < this.cart.length; i++) {
+        console.log(i);
+        if (this.cart[i].id === item.ID) {
+          console.log(item.ID, this.cart[i].id);
+          found = true;
+          this.cart[i].cantidad++;
+          console.log(this.cantidad)
+          break;
+        }
+      }
+      if (!found) {
+        this.cart.push({
+          producto
+        });
+        console.log(this.cart)
+      }
+
+      /* 
+      console.log(this.cart);
+      
+      //
+      for(var item in this.cart){
+        if(item.id === this.cart[item].id && this.cart[item].id.length > 1)
+        console.log('repetido')
+      }
+     for (var i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].name === producto.id) {
+          found = true;
+          this.cantidad += this.cart[i]  ;
+        }
+        console.log(this.cart)
+      }
+      
+       for (let item in this.infohijo) {
         console.log(this.infohijo[item]);
       }
-      /* 
+       
         let items = [];
       items.push(producto);
       for (const item in items) {
@@ -154,8 +211,8 @@ export default {
         } else {
           this.infohijo.push();
         }*/
-    }
-    /*this.infohijo.push(producto);
+};
+/*this.infohijo.push(producto);
       this.total = this.total + producto.price;
       // aqui tengo todos los elementos que voy seleccionando
       // en un array , pero no se repiten asi seleccione varias veces el mismo producto
@@ -171,33 +228,9 @@ export default {
         //this.cantidad = +1;
         console.log(item);
       }*/
-  }
-};
-/* 
-let items = [];
-this.items.push(producto)
-for ( item in items){
-  if( item == item ){
-    this. cantidad = +1;
-  } else {
-    this.infohijo.push();
-  }
-}
-*/
-/*
-computed: {
-        qtyCart(){
-            var busqueda = _.find(this.shared.cart, ['id',this.producto.id])
-            if(typeof busqueda == 'object'){
-               return busqueda.qty
-            }else{
-              return 0;
-            }
-        }
-    },
-*/
 </script>
-<style scoped>
+<style lang="scss">
+@import "../scss/main.scss";
 .change-view {
   background-color: rgba(85, 75, 75, 0.39);
   border-radius: 0.2em;

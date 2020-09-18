@@ -1,19 +1,13 @@
 <template>
-  <div>
-    <div class="contenedor_general">
-      <label class="listado-pendientes">
-        <ol v-for="pedido in pendientes" :key="pedido.id">
-          <li>
-            {{pedido.cliente}}
-            <input
-              @click="()=>guardar_pedidos(pedido)"
-              type="button"
-              value="✌Entregados 💾"
-            />
-          </li>
-        </ol>
-      </label>
-    </div>
+  <div class="contenedor_general">
+    <label class="listado-pendientes">
+      <ol v-for="pedido in pendientes" :key="pedido.id" class="cada_item">
+        <li>
+          {{pedido.cliente}}
+          <input @click="()=>guardar_pedidos(pedido)" type="button" value="💾" />
+        </li>
+      </ol>
+    </label>
   </div>
 </template>
 <script>
@@ -56,30 +50,27 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss">
+@import "../scss/main.scss";
 .contenedor_general {
-  align-content: center;
-  margin: 0em 15em 1em 15em;
-  padding: 1em 0em 1em 4em;
+  padding: 1em 1em 1em 4em;
+  display: inline-block;
   background-color: #e6b7615d;
   box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
-}
-.listado-pendientes {
-  border-radius: 0.1em;
-  list-style-image: url("~@/assets/images/servir.png");
-  font-size: 1.3em;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-input[type="button"] {
-  font-size: larger;
-  color: #030303;
-  outline: none;
-}
-.check {
-  display: inline-flex;
-  flex-direction: column;
-  flex-flow: column;
+  .listado-pendientes {
+    @include flex-orientation(flex, column);
+    list-style-image: url("~@/assets/images/servir.png");
+    .cada_item {
+      li {
+        text-align: left;
+        input[type="button"] {
+          text-align: flex-end;
+          background-color: transparent;
+          outline: none;
+          border: none;
+        }
+      }
+    }
+  }
 }
 </style>>

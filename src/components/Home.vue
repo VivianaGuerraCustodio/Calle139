@@ -4,8 +4,8 @@
     <p>{{ mensaje }}</p>
     <input v-model="nombre_colaborador" type="text" placeholder="JuanPerez" />
     <div>
-        <input @click="ir_salon" class="change-view" type="button" value="Salón" />
-        <input @click="ir_cocina" class="change-view" type="button" value="Cocina" />
+      <input @click="ir_salon" class="change-view" type="button" value="Salón" />
+      <input @click="ir_cocina" class="change-view" type="button" value="Cocina" />
     </div>
   </div>
 </template>
@@ -16,28 +16,29 @@ export default {
   data() {
     return {
       mensaje: "Buen día , selecciona tu zona de trabajo ",
-      nombre_colaborador:"",
+      nombre_colaborador: ""
     };
   },
-  methods:{
-    ir_salon(){
-      localStorage.setItem('usuario', this.nombre_colaborador);
+  methods: {
+    ir_salon() {
+      localStorage.setItem("usuario", this.nombre_colaborador);
       this.$router.push({
-        path:'/salon'
-      })
+        path: "/salon"
+      });
     },
-    ir_cocina(){
-      localStorage.setItem('usuario', this.nombre_colaborador);
+    ir_cocina() {
+      localStorage.setItem("usuario", this.nombre_colaborador);
       this.$router.push({
-        path:'/cocina'
-      })
-    },
+        path: "/cocina"
+      });
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss">
+@import "../scss/main.scss";
 .contenedor {
   display: flex;
   flex-direction: column;
@@ -45,24 +46,24 @@ export default {
   background: rgba(143, 121, 50, 0.192);
   margin: 9em 5em 2em 5em;
   padding: 1em 1em 1em 1em;
-}
-p{
-  font-size: 3em;
-}
-.change-view {
-  background-image: url('~@/assets/images/brochas.png');
-  background-color: transparent;
-  border: none;
-  font-size: 2em;
-  margin-top: 0.5em;
-  width:7em;
-  height: 1.7em;
-  background-size: cover;
-  opacity: 0.9;
-  color:darkgrey;
-}
-.logo {
-  width: 40%;
-  height: 50%;
+  p {
+    font-size: 3em;
+  }
+  .change-view {
+    background-image: url("~@/assets/images/brochas.png");
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+    margin-top: 0.5em;
+    width: 7em;
+    height: 1.7em;
+    background-size: cover;
+    opacity: 0.9;
+    color: darkgrey;
+  }
+  .logo {
+    width: 40%;
+    height: 50%;
+  }
 }
 </style>

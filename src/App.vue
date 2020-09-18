@@ -17,25 +17,5 @@ export default {
 };
 </script>
 
-<style>
-body {
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  background-image: url("../src/assets/images/fondo1.jpg");
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-}
-.footer {
-  font-size: 1.5em;
-  background-color: rgba(139, 69, 19, 0.438);
-  display: flex;
-  justify-content: center;
-}
-hr {
-  background-color: #73572271;
-  border-bottom: none;
-  height: 4px;
-  margin: 1em 0 3em 3em;
-}
-</style>
+<style lang="scss" src='../src/scss/main.scss'></style>
+
