@@ -53,9 +53,9 @@ export default {
     background-image: url("~@/assets/images/brochas.png");
     background-color: transparent;
     border: none;
-    font-size: 2em;
+    font-size: 17px;
     margin-top: 0.5em;
-    width: 7em;
+    width: -moz-available;
     height: 1.7em;
     background-size: cover;
     opacity: 0.9;

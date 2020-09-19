@@ -11,9 +11,11 @@
               <strong>Resumen de Pedido</strong>
             </p>
             <div class="resumen" v-for="info in infohijo" :key="info">
-              <p class="item">{{ info.cantidad }}</p>
-              <p class="item">{{ info.name }}</p>
-              <p class="item">${{ info.price }}</p>
+              <table>
+                <td class="item">{{ info.qtt }}</td>
+                <td class="item">{{ info.name }}</td>
+                <td class="item">${{ info.price }}</td>
+              </table>
               <input @click="remover(info)" class="trash" type="button" />
             </div>
           </div>
@@ -25,7 +27,6 @@
             {{nota_adicional}}
           </p>
         </div>
-        <hr />
         <div class="menús">
           <input v-model="nombre" placeholder="Nombre del cliente" />
           <br />
@@ -131,23 +132,41 @@ export default {
         });
     },
     remover(producto) {
-      const index = this.infohijo.indexOf(producto);
+      const index = this.cart.indexOf(producto);
       if (index !== -1) {
-        this.infohijo.splice(index, 1);
+        this.cart.splice(index,1);
+        //this.infohijo.splice(index,1);
         this.total = this.total - producto.price;
+        this.infohijo.qtt--;
       }
     },
 
     selectProduct(producto) {
-      this.infohijo.push(producto);
+      this.cart.push(producto);
+      this.total += producto.price
+      const index = this.cart.indexOf(producto);
+      console.log(index);
+      if(index !== -1) {
+        this.cart[index].qtt++;
+      }
+      this.infohijo = new Set(this.cart);
+      
+      /*this.cart.push(producto);
+      //let found = false;
       this.total += producto.price;
-      let found = false;
-      console.log(this.infohijo);
+      for (var item in this.cart) {
+        if (this.cart[item].id > 1) {
+          this.cart[item].qtt++;
+          this.infohijo.push(producto);
+        }
+        console.log(this.cart[item]);
+      }*/
+      /*
       for (var item in this.infohijo) {
         if ((item.id === producto.name).length > 1) {
           console.log("producto repetido");
           found = true;
-          producto.cantidad++;
+          item.cantidad++;
           console.log(this.cantidad);
           break;
         }
@@ -157,7 +176,7 @@ export default {
           producto
         });
         console.log(this.cart);
-      }
+      }*/
     }
   }
   /*const item = this.lol[producto];
