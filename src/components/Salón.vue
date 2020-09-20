@@ -66,7 +66,7 @@
         </div>
       </section>
       <div class="envio_cocina">
-        <p>Total a pagar :{{total}}</p>
+        <p>Total a pagar : $/.{{total}}</p>
         <button @click.prevent="enviar_cocina" class="change-view">Enviar a cocina</button>
       </div>
       <br />
@@ -255,14 +255,17 @@ export default {
   border-radius: 0.2em;
   border-style: none;
   outline: none;
-  font-size: 2em;
+  font-size: 19px;
+  padding:5px;
 }
 .pedido_total {
   background-image: url("~@/assets/images/yellowpaper.jpg");
   opacity: 0.85;
   background-size: cover;
   box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
-  margin: 0em 2em 0em 3em;
+  margin: auto;
+  width: max-content;
+  padding:16px 40px 0px 0px;
 }
 .contenedor_pedido {
   display: flex;
@@ -293,6 +296,9 @@ export default {
 }
 .menús {
   padding: 25px;
+  p{
+    margin:10px;
+  }
 }
 .contenedor_pedido .envio_cocina {
   display: grid;

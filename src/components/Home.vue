@@ -3,7 +3,7 @@
     <img class="logo" alt="Vue logo" src="../assets/images/logo.png" />
     <p>{{ mensaje }}</p>
     <input v-model="nombre_colaborador" type="text" placeholder="JuanPerez" />
-    <div>
+    <div class="btn-row">
       <input @click="ir_salon" class="change-view" type="button" value="Salón" />
       <input @click="ir_cocina" class="change-view" type="button" value="Cocina" />
     </div>
@@ -44,10 +44,16 @@ export default {
   flex-direction: column;
   align-items: center;
   background: rgba(143, 121, 50, 0.192);
-  margin: 9em 5em 2em 5em;
-  padding: 1em 1em 1em 1em;
+  margin: 41px;
+  padding: 1em;
+  box-sizing: content-box;
   p {
-    font-size: 3em;
+    font-size: 23px;
+    padding: 23px;
+  }
+  .btn-row {
+    display: flex;
+    flex-direction: row;
   }
   .change-view {
     background-image: url("~@/assets/images/brochas.png");
@@ -55,15 +61,14 @@ export default {
     border: none;
     font-size: 17px;
     margin-top: 0.5em;
-    width: -moz-available;
-    height: 1.7em;
+    width: 128px;
+    height: 31px;
     background-size: cover;
     opacity: 0.9;
     color: darkgrey;
   }
   .logo {
-    width: 40%;
-    height: 50%;
+    width: 240px;
   }
 }
 </style>
