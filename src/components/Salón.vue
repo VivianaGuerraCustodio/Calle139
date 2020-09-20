@@ -11,9 +11,11 @@
               <strong>Resumen de Pedido</strong>
             </p>
             <div class="resumen" v-for="info in infohijo" :key="info">
-              <p class="item">{{ info.cantidad }}</p>
-              <p class="item">{{ info.name }}</p>
-              <p class="item">${{ info.price }}</p>
+              <table>
+                <td class="item">{{ info.qtt }}</td>
+                <td class="item">{{ info.name }}</td>
+                <td class="item">${{ info.price }}</td>
+              </table>
               <input @click="remover(info)" class="trash" type="button" />
             </div>
           </div>
@@ -25,7 +27,6 @@
             {{nota_adicional}}
           </p>
         </div>
-        <hr />
         <div class="menús">
           <input v-model="nombre" placeholder="Nombre del cliente" />
           <br />
@@ -65,7 +66,7 @@
         </div>
       </section>
       <div class="envio_cocina">
-        <p>Total a pagar :{{total}}</p>
+        <p>Total a pagar : $/.{{total}}</p>
         <button @click.prevent="enviar_cocina" class="change-view">Enviar a cocina</button>
       </div>
       <br />
@@ -131,23 +132,41 @@ export default {
         });
     },
     remover(producto) {
-      const index = this.infohijo.indexOf(producto);
+      const index = this.cart.indexOf(producto);
       if (index !== -1) {
-        this.infohijo.splice(index, 1);
+        this.cart.splice(index,1);
+        //this.infohijo.splice(index,1);
         this.total = this.total - producto.price;
+        this.infohijo.qtt--;
       }
     },
 
     selectProduct(producto) {
-      this.infohijo.push(producto);
+      this.cart.push(producto);
+      this.total += producto.price
+      const index = this.cart.indexOf(producto);
+      console.log(index);
+      if(index !== -1) {
+        this.cart[index].qtt++;
+      }
+      this.infohijo = new Set(this.cart);
+      
+      /*this.cart.push(producto);
+      //let found = false;
       this.total += producto.price;
-      let found = false;
-      console.log(this.infohijo);
+      for (var item in this.cart) {
+        if (this.cart[item].id > 1) {
+          this.cart[item].qtt++;
+          this.infohijo.push(producto);
+        }
+        console.log(this.cart[item]);
+      }*/
+      /*
       for (var item in this.infohijo) {
         if ((item.id === producto.name).length > 1) {
           console.log("producto repetido");
           found = true;
-          producto.cantidad++;
+          item.cantidad++;
           console.log(this.cantidad);
           break;
         }
@@ -157,7 +176,7 @@ export default {
           producto
         });
         console.log(this.cart);
-      }
+      }*/
     }
   }
   /*const item = this.lol[producto];
@@ -236,14 +255,17 @@ export default {
   border-radius: 0.2em;
   border-style: none;
   outline: none;
-  font-size: 2em;
+  font-size: 19px;
+  padding:5px;
 }
 .pedido_total {
   background-image: url("~@/assets/images/yellowpaper.jpg");
   opacity: 0.85;
   background-size: cover;
   box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
-  margin: 0em 2em 0em 3em;
+  margin: auto;
+  width: max-content;
+  padding:16px 40px 0px 0px;
 }
 .contenedor_pedido {
   display: flex;
@@ -274,6 +296,9 @@ export default {
 }
 .menús {
   padding: 25px;
+  p{
+    margin:10px;
+  }
 }
 .contenedor_pedido .envio_cocina {
   display: grid;
