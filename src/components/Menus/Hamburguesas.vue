@@ -23,18 +23,22 @@ export default {
         {
           name: "Simple",
           price: 10,
+          qtt: ""
         },
         {
           name: "Doble",
           price: 15,
+          qtt: ""
         },
         {
           name: "Papas fritas",
           price: 5,
+          qtt: ""
         },
         {
           name: "Aros de cebolla",
           price: 5,
+          qtt: ""
         },
       ],
     };

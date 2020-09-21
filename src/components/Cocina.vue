@@ -48,14 +48,14 @@ export default {
     db.collection("pedidos")
       .where("status", "==", "pendiente")
       .onSnapshot(querySnapshot => {
-        const orders = [];
+        const pending = [];
         querySnapshot.forEach(function(doc) {
-          orders.push({
+          pending.push({
             id: doc.id,
             ...doc.data()
           });
         });
-        this.info_pedido = orders;
+        this.info_pedido = pending;
       });
     //const db = firebase.firestore();
     db.collection("pedidos")

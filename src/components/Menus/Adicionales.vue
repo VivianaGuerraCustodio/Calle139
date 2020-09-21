@@ -23,10 +23,12 @@ export default {
         {
           name: "Queso",
           price: 1,
+          qtt: ""
         },
         {
           name: "Huevo",
           price: 1,
+          qtt: ""
         },
       ],
     };

@@ -67,7 +67,7 @@
       </section>
       <div class="envio_cocina">
         <p>Total a pagar : $/.{{total}}</p>
-        <button @click.prevent="enviar_cocina" class="change-view">Enviar a cocina</button>
+        <button @click="() => enviar_cocina()" class="change-view">Enviar a cocina</button>
       </div>
       <br />
       <p>{{aviso}}</p>
@@ -118,7 +118,7 @@ export default {
           cliente: this.nombre,
           mesa: this.mesa,
           status: "pendiente",
-          resumen_de_pedido: this.infohijo,
+          resumen_de_pedido: Array.from(this.infohijo),
           nota: this.nota_adicional,
           hora_pedido: firebase.firestore.FieldValue.serverTimestamp(),
           hora_envio_salon: "",
@@ -126,6 +126,15 @@ export default {
         })
         .then(() => {
           this.aviso = "Se envió el pedido a cocina";
+          setTimeout(() => {
+            (this.nombre = ""), 
+            (this.mesa = ""),
+            (this.nota_adicional = ""),
+            (this.aviso = ""),
+            (this.infohijo = ""),
+            (this.mesa = ""),
+            (this.total = "");
+          }, 5000);
         })
         .catch(() => {
           this.aviso = "Hubo un error, toma el pedido de nuevo :)";
@@ -134,119 +143,27 @@ export default {
     remover(producto) {
       const index = this.cart.indexOf(producto);
       if (index !== -1) {
-        this.cart.splice(index,1);
-        //this.infohijo.splice(index,1);
+        this.cart.splice(index, 1);
         this.total = this.total - producto.price;
-        this.infohijo.qtt--;
+        producto.qtt--;
       }
+      this.infohijo = new Set(this.cart);
+      this.lol.push(this.infohijo);
     },
 
     selectProduct(producto) {
       this.cart.push(producto);
-      this.total += producto.price
+      this.total += producto.price;
       const index = this.cart.indexOf(producto);
       console.log(index);
-      if(index !== -1) {
-        this.cart[index].qtt++;
+      if (index !== -1) {
+        producto.qtt++;
+        this.infohijo = new Set(this.cart);
+        this.lol.push(this.infohijo);
       }
-      this.infohijo = new Set(this.cart);
-      
-      /*this.cart.push(producto);
-      //let found = false;
-      this.total += producto.price;
-      for (var item in this.cart) {
-        if (this.cart[item].id > 1) {
-          this.cart[item].qtt++;
-          this.infohijo.push(producto);
-        }
-        console.log(this.cart[item]);
-      }*/
-      /*
-      for (var item in this.infohijo) {
-        if ((item.id === producto.name).length > 1) {
-          console.log("producto repetido");
-          found = true;
-          item.cantidad++;
-          console.log(this.cantidad);
-          break;
-        }
-      }
-      if (!found) {
-        this.cart.push({
-          producto
-        });
-        console.log(this.cart);
-      }*/
     }
   }
-  /*const item = this.lol[producto];
-      console.log(item);
-      this.total += producto.price;
-      let found = false;
-      for (var i = 0; i < this.cart.length; i++) {
-        console.log(i);
-        if (this.cart[i].id === item.ID) {
-          console.log(item.ID, this.cart[i].id);
-          found = true;
-          this.cart[i].cantidad++;
-          console.log(this.cantidad)
-          break;
-        }
-      }
-      if (!found) {
-        this.cart.push({
-          producto
-        });
-        console.log(this.cart)
-      }
-
-      /* 
-      console.log(this.cart);
-      
-      //
-      for(var item in this.cart){
-        if(item.id === this.cart[item].id && this.cart[item].id.length > 1)
-        console.log('repetido')
-      }
-     for (var i = 0; i < this.cart.length; i++) {
-        if (this.cart[i].name === producto.id) {
-          found = true;
-          this.cantidad += this.cart[i]  ;
-        }
-        console.log(this.cart)
-      }
-      
-       for (let item in this.infohijo) {
-        console.log(this.infohijo[item]);
-      }
-       
-        let items = [];
-      items.push(producto);
-      for (const item in items) {
-        console.log(item);
-        console.log(items)
-        if (item == item) {
-          this.cantidad = +1;
-        } else {
-          this.infohijo.push();
-        }*/
 };
-/*this.infohijo.push(producto);
-      this.total = this.total + producto.price;
-      // aqui tengo todos los elementos que voy seleccionando
-      // en un array , pero no se repiten asi seleccione varias veces el mismo producto
-      let sinDuplicado = [...new Set(this.infohijo)];
-      console.log(sinDuplicado.length)
-      // this.cantidad = sinDupla.length;
-       if (sinDuplicado.length > 1) var cantidad = +1;
-       console.log(cantidad)
-      // let search = sinDupla.find(name, this.infohijo.name);
-      // console.log(search);
-      console.log(sinDuplicado);
-      for (let item of sinDuplicado) {
-        //this.cantidad = +1;
-        console.log(item);
-      }*/
 </script>
 <style lang="scss">
 @import "../scss/main.scss";
@@ -256,7 +173,7 @@ export default {
   border-style: none;
   outline: none;
   font-size: 19px;
-  padding:5px;
+  padding: 5px;
 }
 .pedido_total {
   background-image: url("~@/assets/images/yellowpaper.jpg");
@@ -265,7 +182,7 @@ export default {
   box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
   margin: auto;
   width: max-content;
-  padding:16px 40px 0px 0px;
+  padding: 16px 40px 0px 0px;
 }
 .contenedor_pedido {
   display: flex;
@@ -296,8 +213,8 @@ export default {
 }
 .menús {
   padding: 25px;
-  p{
-    margin:10px;
+  p {
+    margin: 10px;
   }
 }
 .contenedor_pedido .envio_cocina {
@@ -322,4 +239,3 @@ export default {
   width: 1.4em;
 }
 </style>
-/* plazo 24horas 166178075 servicio 201149446 */
