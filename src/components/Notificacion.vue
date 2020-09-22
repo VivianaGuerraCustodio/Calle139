@@ -11,7 +11,8 @@
   </div>
 </template>
 <script>
-import firebase from "firebase";
+import {db} from "../../firebaseConfig/index.js";
+import firebase from "../../firebaseConfig/index.js";
 export default {
   name: "Notificacion",
   components: {},
@@ -21,7 +22,6 @@ export default {
     };
   },
   mounted() {
-    const db = firebase.firestore();
     db.collection("pedidos")
       .where("status", "==", "terminado")
       .onSnapshot(querySnapshot => {
@@ -37,9 +37,6 @@ export default {
   },
   methods: {
     guardar_pedidos(pedido) {
-      console.log(pedido);
-      const db = firebase.firestore();
-      //const pedidos = this.pendientes;
       db.collection("pedidos")
         .doc(pedido.id)
         .update({

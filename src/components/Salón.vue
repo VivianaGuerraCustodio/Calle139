@@ -10,7 +10,7 @@
             <p>
               <strong>Resumen de Pedido</strong>
             </p>
-            <div class="resumen" v-for="info in infohijo" :key="info">
+            <div class="resumen" v-for="(info,index) in infohijo" :key="index">
               <table>
                 <td class="item">{{ info.qtt }}</td>
                 <td class="item">{{ info.name }}</td>
@@ -82,7 +82,8 @@ import Desayuno from "./Menus/Desayuno.vue";
 import Adicionales from "./Menus/Adicionales.vue";
 import Bebidas from "./Menus/Bebidas.vue";
 import Hamburguesas from "./Menus/Hamburguesas.vue";
-import firebase from "firebase";
+import {db} from "../../firebaseConfig/index.js";
+import firebase from "../../firebaseConfig/index.js";
 
 export default {
   name: "Salon",
@@ -111,7 +112,6 @@ export default {
   },
   methods: {
     enviar_cocina() {
-      const db = firebase.firestore();
       db.collection("pedidos")
         .add({
           colaborador: localStorage.getItem("usuario"),

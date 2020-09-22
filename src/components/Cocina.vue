@@ -3,7 +3,7 @@
     <navegador />
     <div class="contenedor_de_pedidos">
       <h3 class="subtitulo">Pedidos por hacer</h3>
-      <div v-for="pedido in info_pedido" :key="pedido">
+      <div v-for="(pedido,index) in info_pedido" :key="index">
         <div class="cuadro_pedido">
           <p>Cliente : {{pedido.cliente}}</p>
           <p>Hora de pedido :{{new Date(pedido.hora_pedido*1000)}}</p>
@@ -20,7 +20,7 @@
     </div>
     <div class="contenedor_de_pedidos">
       <h3 class="subtitulo">Pedidos terminados</h3>
-      <div class="cuadro_pedido" v-for="pedido in pedidos_terminados" :key="pedido">
+      <div class="cuadro_pedido" v-for="(pedido,index) in pedidos_terminados" :key="index">
         <p>{{pedido.cliente}}</p>
         <p>{{new Date(pedido.hora_envio_salon*1000)}}</p>
       </div>
@@ -29,7 +29,8 @@
 </template>
 <script>
 import Navegador from "./Navegador";
-import firebase from "firebase";
+import {db} from "../../firebaseConfig/index.js";
+import firebase from "../../firebaseConfig/index.js";
 export default {
   name: "Cocina",
   components: {
@@ -44,7 +45,6 @@ export default {
     };
   },
   mounted() {
-    const db = firebase.firestore();
     db.collection("pedidos")
       .where("status", "==", "pendiente")
       .onSnapshot(querySnapshot => {
@@ -74,7 +74,6 @@ export default {
   methods: {
     enviar_salon(pedido) {
       console.log(pedido);
-      const db = firebase.firestore();
       db.collection("pedidos")
         .doc(pedido.id)
         .update({
