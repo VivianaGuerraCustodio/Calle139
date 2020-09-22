@@ -1,7 +1,7 @@
 <template>
   <table>
     <tbody>
-      <tr class="menus" v-for="item in items" :key="item">
+      <tr class="menus" v-for="(item,index) in items" :key="index">
         <td>
           <input @click="selectProduct(item)" type="button" value="+" />
         </td>
