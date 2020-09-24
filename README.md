@@ -1,4 +1,4 @@
-# <img src="src/assets/images/logo.png" style="width:40px;">   Calle 139  📝 
+# <img src="src/assets/images/CIcon.png">   Calle 139  📝 
 En desarrollo :)
 **************
 ## <p style="color: #0a0a0ac0;"> · Descripción</p>
@@ -20,19 +20,7 @@ padding: 4px;
 margin:auto;
 border-radius: 5px;
 text-align:center;">
-<img src="src/assets/images/figma-1.svg" style="
-width:30px;
-margin:1px 10px ;
-"><img src="src/assets/images/vue.png" style="
-width:50px;
-margin:1px 10px ;
-"><img src="src/assets/images/sass.png" style="
-width:40px;
-margin:1px 10px ;
-"><img src="src/assets/images/firebase.png" style="
-width:40px;
-margin:1px 10px ;
-">
+<img src="./src/assets/images/banner-BQ.png">
 </div>
 
 **************
@@ -47,9 +35,8 @@ font-family: Arial;
 font-size:18px;
 color: darkgrey;
 border-radius: 5px;">
-<p><img src="src/assets/images/heroku.png" style="width:20px;
-padding-top:6px;">Heroku :<a href="calle139.herokuapp.com"> Aquí</a> </p>
-<p> <img src="src/assets/images/firebase.png" style="width:20px;
+<p><img src="src/assets/images/hIcon.jpg"">Heroku :<a href="calle139.herokuapp.com"> Aquí</a> </p>
+<p> <img src="src/assets/images/fIcon.png" style="width:20px;
 padding-top:6px;">Firebase : <a href="calle139.web.app"> Aquí</a> </p>
 </div>
 
