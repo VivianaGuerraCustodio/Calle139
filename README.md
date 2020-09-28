@@ -2,43 +2,18 @@
 En desarrollo :)
 **************
 ## <p style="color: #0a0a0ac0;"> · Descripción</p>
-<div style ="background-color : #e6b7615d; 
-padding: 4px; 
-margin:auto;
-text-align: justify;
-font-family: Arial;
-font-size:18px;
-color: darkgrey;
-border-radius: 5px;">
 <p> Esta webApp es una pwa desarrollada en Vue.js ; registra pedidos que pueden ser actualizados , editados, eliminados y almacenados en una base de datos. </p>
 </div>
 
 **************
 ## <p style="color: #0a0a0ac0;"> · Tecnologías utilizadas</p>
-<div style ="background-color : #e6b7615d; 
-padding: 4px; 
-margin:auto;
-border-radius: 5px;
-text-align:center;">
 <img src="./src/assets/images/banner-BQ.png">
-</div>
 
 **************
 ## <p style="color: #0a0a0ac0;">· Hosting  🌎</p>
-**************
-<div 
-style ="background-color : #e6b7615d; 
-padding: 4px; 
-margin:auto;
-text-align: center;
-font-family: Arial;
-font-size:18px;
-color: darkgrey;
-border-radius: 5px;">
 <p><img src="src/assets/images/hIcon.jpg"">Heroku :<a href="calle139.herokuapp.com"> Aquí</a> </p>
 <p> <img src="src/assets/images/fIcon.png" style="width:20px;
 padding-top:6px;">Firebase : <a href="calle139.web.app"> Aquí</a> </p>
-</div>
 
 **************
 
@@ -90,13 +65,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## <p style="color: #0a0a0ac0;">· Objetivos de aprendizaje</p>
 **************
 
-<table style="background-color:#e9c7882c;">
-  <tr style ="background-color : #e6b7615d; 
-font-family: Arial;
-font-size:16px;
-color: darkgrey;
-border-radius: 5px; 
-border:3px solid #b59761;">
+<table>
+  <tr>
     <th>HTML y CSS</th>
     <th>Frontend Development</th>
     <th>PWA</th>
@@ -107,7 +77,7 @@ border:3px solid #b59761;">
     <th>Organización en Github</th>
     <th>Buenas prácticas de desarrollo</th>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td>✅  HTML semántico</td>
     <td>✅ Componentes</td>
     <td>Concepto</td>
@@ -118,7 +88,7 @@ border:3px solid #b59761;">
     <td>✅Projects</td>
     <td>✅ Modularización</td>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td>✅ CSS flexbox</td>
     <td>Manejo del estado</td>
     <td>Utilidad</td>
@@ -129,7 +99,7 @@ border:3px solid #b59761;">
     <td>Issues</td>
     <td>✅Nomenclatura / Semántica</td>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td>✅ Sass</td>
     <td></td>
     <td></td>
@@ -140,7 +110,7 @@ border:3px solid #b59761;">
     <td>Labels</td>
     <td>✅ Linting</td>
   </tr>
-    <tr style="color: darkgrey;font-family: Arial;">
+    <tr>
     <td></td>
     <td></td>
     <td></td>
@@ -151,7 +121,7 @@ border:3px solid #b59761;">
     <td>Milestones</td>
     <td></td>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td></td>
     <td></td>
     <td></td>
@@ -162,7 +132,7 @@ border:3px solid #b59761;">
     <td></td>
     <td></td>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td></td>
     <td></td>
     <td></td>
@@ -173,7 +143,7 @@ border:3px solid #b59761;">
     <td></td>
     <td></td>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td></td>
     <td></td>
     <td></td>
@@ -184,7 +154,7 @@ border:3px solid #b59761;">
     <td></td>
     <td></td>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td></td>
     <td></td>
     <td></td>
@@ -195,7 +165,7 @@ border:3px solid #b59761;">
     <td></td>
     <td></td>
   </tr>
-    <tr style="color: darkgrey;font-family: Arial;">
+    <tr>
     <td></td>
     <td></td>
     <td></td>
@@ -206,7 +176,7 @@ border:3px solid #b59761;">
     <td></td>
     <td></td>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td></td>
     <td></td>
     <td></td>
@@ -217,7 +187,7 @@ border:3px solid #b59761;">
     <td></td>
     <td></td>
   </tr>
-  <tr style="color: darkgrey;font-family: Arial;">
+  <tr>
     <td></td>
     <td></td>
     <td></td>
