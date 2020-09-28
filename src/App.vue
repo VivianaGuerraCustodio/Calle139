@@ -1,13 +1,6 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <hr />
-    <footer class="footer">
-      <p>
-        Hecho por
-        <a target="_blank" href="https://github.com/VivianaGuerraCustodio">VivianaGuerra</a>
-      </p>
-    </footer>
   </div>
 </template>
 

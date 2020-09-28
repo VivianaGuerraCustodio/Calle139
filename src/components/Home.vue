@@ -43,8 +43,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(143, 121, 50, 0.192);
-  margin: 41px;
+  background-color:#f281203d;
+  margin: 100px 30px;
   padding: 1em;
   box-sizing: content-box;
   p {

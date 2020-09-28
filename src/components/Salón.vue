@@ -172,12 +172,11 @@ export default {
   border-radius: 0.2em;
   border-style: none;
   outline: none;
-  font-size: 19px;
   padding: 5px;
 }
 .pedido_total {
-  background-image: url("~@/assets/images/yellowpaper.jpg");
-  opacity: 0.85;
+  background-color:#bf974d;
+  opacity: 0.65;
   background-size: cover;
   box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
   margin: auto;

@@ -6,18 +6,25 @@
       <div class="flex-pedido">
         <div v-for="(pedido, index) in info_pedido" :key="index">
           <div class="cuadro_pedido">
-            <p>Cliente : {{ pedido.cliente }}</p>
+            <p>🧑 Cliente : <br>🏷️ {{ pedido.cliente }}</p>
             <p>
-              Hora de pedido :{{
-                new Date((pedido.hora_pedido*1000)).toLocaleString()
+              ⏲️ H. de pedido :<br>🏷️ {{
+                new Date(pedido.hora_pedido * 1000).toLocaleString()
               }}
             </p>
-            <ol>
-              Resumen de pedido :
-              {{
-                pedido.resumen_de_pedido
-              }}
-            </ol>
+            <p>📝 Resumen de pedido :</p>
+            <div
+              class="items-pending"
+              v-for="(resumen, index) in pedido.resumen_de_pedido"
+              :key="index"
+            >
+              <p>{{ resumen.qtt }} : {{ resumen.name }}</p>
+            </div>
+            <p>
+              <strong>
+                {{ pedido.nota }}
+              </strong>
+            </p>
             <input
               @click="() => enviar_salon(pedido)"
               type="button"
@@ -55,13 +62,7 @@ export default {
   data() {
     return {
       info_pedido: "",
-      pedidos_terminados: "",
-      options: {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      }
+      pedidos_terminados: ""
     };
   },
   mounted() {
@@ -124,9 +125,14 @@ export default {
   margin: 1em 4em 1em 4em;
   padding: 1em 2em 1em 2em;
 }
+.items-pending {
+  display: flex;
+  flex-direction: row;
+  padding: auto;
+}
 .subtitulo {
   text-align: left;
-  font-size: 1.4em;
+  font-size: medium;
   color: rgb(50, 53, 56);
 }
 .pedidos {
@@ -134,19 +140,15 @@ export default {
 }
 .cuadro_pedido {
   display: flex;
+  text-align: left;
   flex-direction: column;
   box-sizing: content-box;
   background-color: #fce84f8c;
   padding: 10px;
   margin: 5px;
   border-radius: 0.5em;
-  width: 210px;
-}
-.change-view {
-  background-color: rgba(85, 75, 75, 0.39);
-  border-radius: 0.2em;
-  border-style: none;
-  outline: none;
+  width: 170px;
+  font-size: small;
 }
 .flex-pedido {
   box-sizing: border-box;
