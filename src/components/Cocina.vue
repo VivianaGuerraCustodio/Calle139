@@ -35,6 +35,7 @@
         </div>
       </div>
     </div>
+    <hr />
     <div class="contenedor_de_pedidos">
       <h3 class="subtitulo">Pedidos terminados</h3>
       <div class="flex-pedido">
@@ -43,8 +44,8 @@
           v-for="(pedido, index) in pedidos_terminados"
           :key="index"
         >
-          <p>{{ pedido.cliente }}</p>
-          <p>{{ new Date(pedido.hora_envio_salon * 1000) }}</p>
+          <p>🧑 Cliente : {{ pedido.cliente }}</p>
+          <p>⏲️ H. de pedido : {{ new Date(pedido.hora_envio_salon * 1000) }}</p>
         </div>
       </div>
     </div>

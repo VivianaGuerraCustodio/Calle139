@@ -43,7 +43,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:#f281203d;
+  background-color:#bf9b4db4;
   margin: 100px 30px;
   padding: 1em;
   box-sizing: content-box;
