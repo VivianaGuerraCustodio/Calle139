@@ -1,0 +1,37 @@
+[debug] [2020-09-28T16:35:59.167Z] ----------------------------------------------------------------------
+[debug] [2020-09-28T16:35:59.169Z] Command:       /home/ena/.nvm/versions/node/v14.3.0/bin/node /home/ena/.nvm/versions/node/v14.3.0/bin/firebase deploy
+[debug] [2020-09-28T16:35:59.169Z] CLI Version:   8.10.0
+[debug] [2020-09-28T16:35:59.169Z] Platform:      linux
+[debug] [2020-09-28T16:35:59.169Z] Node Version:  v14.3.0
+[debug] [2020-09-28T16:35:59.169Z] Time:          Mon Sep 28 2020 11:35:59 GMT-0500 (Peru Standard Time)
+[debug] [2020-09-28T16:35:59.170Z] ----------------------------------------------------------------------
+[debug] [2020-09-28T16:35:59.170Z] 
+[debug] [2020-09-28T16:35:59.174Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-09-28T16:35:59.174Z] > authorizing via signed-in user
+[debug] [2020-09-28T16:35:59.175Z] [iam] checking project calle139 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-09-28T16:35:59.177Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/calle139:testIamPermissions  
+ {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-09-28T16:36:00.800Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Sep 2020 16:36:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=818","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-09-28T16:36:00.803Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/calle139  
+ 
+[debug] [2020-09-28T16:36:02.216Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Sep 2020 16:36:02 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'calle139'...
+[info] 
+[info] i  deploying firestore, hosting 
+[debug] [2020-09-28T16:36:02.797Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received an instance of Array
+    at validateString (internal/validators.js:121:11)
+    at Object.join (path.js:1039:7)
+    at Config.path (/home/ena/.nvm/versions/node/v14.3.0/lib/node_modules/firebase-tools/lib/config.js:125:39)
+    at prepareIndexes (/home/ena/.nvm/versions/node/v14.3.0/lib/node_modules/firebase-tools/lib/deploy/firestore/prepare.js:33:40)
+    at /home/ena/.nvm/versions/node/v14.3.0/lib/node_modules/firebase-tools/lib/deploy/firestore/prepare.js:56:9
+    at Generator.next (<anonymous>)
+    at /home/ena/.nvm/versions/node/v14.3.0/lib/node_modules/firebase-tools/lib/deploy/firestore/prepare.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/home/ena/.nvm/versions/node/v14.3.0/lib/node_modules/firebase-tools/lib/deploy/firestore/prepare.js:4:12)
+    at default_1 (/home/ena/.nvm/versions/node/v14.3.0/lib/node_modules/firebase-tools/lib/deploy/firestore/prepare.js:43:12)
+    at _chain (/home/ena/.nvm/versions/node/v14.3.0/lib/node_modules/firebase-tools/lib/deploy/index.js:22:40)
+    at /home/ena/.nvm/versions/node/v14.3.0/lib/node_modules/firebase-tools/lib/deploy/index.js:63:16
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -14,8 +14,6 @@
     ]
   },
   "firestore": {
-    "rules": "index.js",
-    "indexes": [],
-    "fieldOverrides": []
+    "rules": "index.js"
   }
 }
