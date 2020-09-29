@@ -45,7 +45,8 @@
           :key="index"
         >
           <p>🧑 Cliente : {{ pedido.cliente }}</p>
-          <p>⏲️ H. de pedido : {{ new Date(pedido.hora_envio_salon * 1000) }}</p>
+          <p>⏲️ H. de pedido : {{ new Date(pedido.hora_pedido * 1000).toLocaleString() }}</p>
+          <p>⏲️ H. de envío : {{ new Date(pedido.hora_envio_salon * 1000).toLocaleString() }}</p>
         </div>
       </div>
     </div>
