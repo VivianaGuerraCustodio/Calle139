@@ -49,7 +49,8 @@ nav {
   box-sizing: border-box;
   margin-top:10px;
   .nombre {
-    margin-left: 42px;
+    margin-left: 45px;
+    color: #fff;
   }
   .notificacion {
     width: 40px;
