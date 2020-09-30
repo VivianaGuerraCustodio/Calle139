@@ -13,9 +13,7 @@
     flex-direction: $flex-direction;
 }
 body {
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    background-image: url("../assets/images/fondo1.jpg");
+    background: url("../assets/images/fondo1.jpg")top/cover no-repeat fixed;
     text-align: center;
 }
 
