@@ -9,7 +9,7 @@
             <p>🧑 Cliente : <br>🏷️ {{ pedido.cliente }}</p>
             <p>
               ⏲️ H. de pedido :<br>🏷️ {{
-                new Date(pedido.hora_pedido * 1000).toLocaleString()
+                new Date(pedido.hora_pedido.seconds*1000).toLocaleString()
               }}
             </p>
             <p>📝 Resumen de pedido :</p>
@@ -45,8 +45,8 @@
           :key="index"
         >
           <p>🧑 Cliente : {{ pedido.cliente }}</p>
-          <p>⏲️ H. de pedido : {{ new Date(pedido.hora_pedido * 1000).toLocaleString() }}</p>
-          <p>⏲️ H. de envío : {{ new Date(pedido.hora_envio_salon * 1000).toLocaleString() }}</p>
+          <p>⏲️ H. de pedido : {{ new Date(pedido.hora_pedido.seconds * 1000).toLocaleString() }}</p>
+          <p>⏲️ H. de envío : {{ new Date(pedido.hora_envio_salon.seconds* 1000).toLocaleString() }}</p>
         </div>
       </div>
     </div>

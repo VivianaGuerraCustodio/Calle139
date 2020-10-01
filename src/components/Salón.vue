@@ -4,19 +4,27 @@
     <div class="pedido_total">
       <section class="contenedor_pedido">
         <div class="resumen_pedido">
-          <p>Cliente : {{nombre}}</p>
-          <p>Mesa : {{mesa}}</p>
+          <p>Cliente : {{ nombre }}</p>
+          <p>Mesa : {{ mesa }}</p>
           <div>
             <p>
               <strong>Resumen de Pedido</strong>
             </p>
-            <div class="resumen" v-for="(info,index) in infohijo" :key="index">
-              <table>
-                <td class="item">{{ info.qtt }}</td>
-                <td class="item">{{ info.name }}</td>
-                <td class="item">${{ info.price }}</td>
-              </table>
-              <input @click="remover(info)" class="trash" type="button" />
+            <div class="div-pedido">
+              <div
+                class="resumen"
+                v-for="(info, index) in infohijo"
+                :key="index"
+              >
+                <table>
+                  <td class="item">{{ info.qtt }}</td>
+                  <td class="item">{{ info.name }}</td>
+                  <td class="item">${{ info.price }}</td>
+                  <td>
+                    <input @click="remover(info)" class="trash" type="button" />
+                  </td>
+                </table>
+              </div>
             </div>
           </div>
           <p v-if="nota_adicional">
@@ -24,38 +32,55 @@
               Nota:
               <br />
             </strong>
-            {{nota_adicional}}
+            {{ nota_adicional }}
           </p>
         </div>
         <div class="menús">
-          <input v-model="nombre" placeholder="Nombre del cliente" />
+          <input v-model="nombre" type="text" placeholder="Nombre del cliente" />
           <br />
           <input v-model="mesa" type="number" placeholder="Nº de mesa" />
           <p>
             <strong>Menús</strong>
           </p>
           <div>
-            <button @click="mostrar_desayuno =! mostrar_desayuno" class="change-view">Desayuno</button>
+            <button
+              @click="mostrar_desayuno = !mostrar_desayuno"
+              class="change-view"
+            >
+              Desayuno
+            </button>
             <div v-if="mostrar_desayuno">
               <desayuno :selectProduct="selectProduct" :remover="remover" />
             </div>
             <br />
           </div>
-          <button @click="mostrar_durante=! mostrar_durante" class="change-view">Durante el día</button>
+          <button
+            @click="mostrar_durante = !mostrar_durante"
+            class="change-view"
+          >
+            Durante el día
+          </button>
           <div v-if="mostrar_durante">
             <hamburguesas :selectProduct="selectProduct" :remover="remover" />
           </div>
           <br />
-          <button @click="mostrar_bebidas=!mostrar_bebidas" class="change-view">Bebidas</button>
+          <button
+            @click="mostrar_bebidas = !mostrar_bebidas"
+            class="change-view"
+          >
+            Bebidas
+          </button>
           <div v-if="mostrar_bebidas">
             <bebidas :selectProduct="selectProduct" :remover="remover" />
           </div>
           <br />
           <button
-            @click="mostrar_adicionales=!mostrar_adicionales"
+            @click="mostrar_adicionales = !mostrar_adicionales"
             id="adicionales"
             class="change-view"
-          >Adicionales</button>
+          >
+            Adicionales
+          </button>
           <div v-if="mostrar_adicionales">
             <adicionales :selectProduct="selectProduct" :remover="remover" />
           </div>
@@ -66,11 +91,13 @@
         </div>
       </section>
       <div class="envio_cocina">
-        <p>Total a pagar : $/.{{total}}</p>
-        <button @click="() => enviar_cocina()" class="change-view">Enviar a cocina</button>
+        <p>Total a pagar : $/.{{ total }}</p>
+        <button @click="() => enviar_cocina()" class="change-view">
+          Enviar a cocina
+        </button>
       </div>
       <br />
-      <p>{{aviso}}</p>
+      <p>{{ aviso }}</p>
       <!--<p v-else class="avisoIncorrecto margen">{{aviso}}</p>-->
     </div>
   </div>
@@ -82,7 +109,7 @@ import Desayuno from "./Menus/Desayuno.vue";
 import Adicionales from "./Menus/Adicionales.vue";
 import Bebidas from "./Menus/Bebidas.vue";
 import Hamburguesas from "./Menus/Hamburguesas.vue";
-import {db} from "../../firebaseConfig/index.js";
+import { db } from "../../firebaseConfig/index.js";
 import firebase from "../../firebaseConfig/index.js";
 
 export default {
@@ -127,13 +154,13 @@ export default {
         .then(() => {
           this.aviso = "Se envió el pedido a cocina";
           setTimeout(() => {
-            (this.nombre = ""), 
-            (this.mesa = ""),
-            (this.nota_adicional = ""),
-            (this.aviso = ""),
-            (this.infohijo = ""),
-            (this.mesa = ""),
-            (this.total = "");
+            (this.nombre = ""),
+              (this.mesa = ""),
+              (this.nota_adicional = ""),
+              (this.aviso = ""),
+              (this.infohijo = ""),
+              (this.mesa = ""),
+              (this.total = "");
           }, 5000);
         })
         .catch(() => {
@@ -175,12 +202,12 @@ export default {
   padding: 8px;
 }
 .pedido_total {
-  background-color:#bf9b4db4;
+  background-color: #bf9b4db4;
   opacity: 0.85;
   background-size: cover;
   box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
   margin: auto;
-  width: max-content;
+  width: min-content;
   padding: 16px 40px 0px 0px;
 }
 .contenedor_pedido {
@@ -190,6 +217,9 @@ export default {
 }
 .resumen {
   display: block ruby;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
 }
 .trash {
   border: none;
@@ -236,5 +266,10 @@ export default {
 }
 #buton_trash {
   width: 1.4em;
+}
+.div-pedido{
+  overflow: scroll;
+  width:250px;
+  height: 330px;
 }
 </style>

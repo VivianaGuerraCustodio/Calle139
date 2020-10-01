@@ -13,8 +13,16 @@
     flex-direction: $flex-direction;
 }
 body {
-    background: url("../assets/images/fondo1.jpg")top/cover no-repeat fixed;
+    background: url("../assets/images/fondo1.jpg") top/cover no-repeat fixed;
     text-align: center;
+}
+input[type="text"],
+input[type="number"],
+textarea {
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    border-style: none;
 }
 
 hr {
@@ -29,6 +37,6 @@ input[value="-"] {
     border-radius: 0.2em;
     border-style: none;
     outline: none;
-    width:40px;
-    height:33px;
+    width: 40px;
+    height: 33px;
 }

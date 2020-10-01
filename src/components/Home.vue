@@ -4,8 +4,18 @@
     <p>{{ mensaje }}</p>
     <input v-model="nombre_colaborador" type="text" placeholder="JuanPerez" />
     <div class="btn-row">
-      <input @click="ir_salon" class="change-view" type="button" value="Salón" />
-      <input @click="ir_cocina" class="change-view" type="button" value="Cocina" />
+      <input
+        @click="ir_salon"
+        class="change-view"
+        type="button"
+        value="Salón"
+      />
+      <input
+        @click="ir_cocina"
+        class="change-view"
+        type="button"
+        value="Cocina"
+      />
     </div>
   </div>
 </template>
@@ -41,16 +51,24 @@ export default {
 @import "../scss/main.scss";
 .contenedor {
   display: flex;
+  background-color: #bf9b4db4;
+  box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
+  /* text-align: center; */
+  /* justify-content: center; */
   flex-direction: column;
+  /* width: -webkit-min-content; */
+  width: -moz-min-content;
+  width: 334px;
+  margin: auto;
+  margin-top: 95px;
+  padding: 2em;
   align-items: center;
-  background-color:#bf9b4db4;
-  margin: 100px 30px;
-  padding: 1em;
-  box-sizing: content-box;
+
   p {
     font-size: 23px;
     padding: 23px;
   }
+  
   .btn-row {
     display: flex;
     flex-direction: row;
