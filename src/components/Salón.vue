@@ -36,9 +36,8 @@
           </p>
         </div>
         <div class="menús">
-          <input v-model="nombre" type="text" placeholder="Nombre del cliente" />
-          <br />
-          <input v-model="mesa" type="number" placeholder="Nº de mesa" />
+          <input v-model="nombre" type="text" placeholder="N.Cliente" />
+          <input v-model="mesa" type="number" placeholder="Nºmesa" />
           <p>
             <strong>Menús</strong>
           </p>
@@ -50,7 +49,11 @@
               Desayuno
             </button>
             <div v-if="mostrar_desayuno">
-              <desayuno :selectProduct="selectProduct" :remover="remover" @close="mostrar_desayuno = false"/>
+              <desayuno
+                :selectProduct="selectProduct"
+                :remover="remover"
+                @close="mostrar_desayuno = false"
+              />
             </div>
             <br />
           </div>
@@ -61,7 +64,11 @@
             Durante el día
           </button>
           <div v-if="mostrar_durante">
-            <hamburguesas :selectProduct="selectProduct" :remover="remover" @close="mostrar_durante = false" />
+            <hamburguesas
+              :selectProduct="selectProduct"
+              :remover="remover"
+              @close="mostrar_durante = false"
+            />
           </div>
           <br />
           <button
@@ -71,7 +78,11 @@
             Bebidas
           </button>
           <div v-if="mostrar_bebidas">
-            <bebidas :selectProduct="selectProduct" :remover="remover" @close="mostrar_bebidas = false"/>
+            <bebidas
+              :selectProduct="selectProduct"
+              :remover="remover"
+              @close="mostrar_bebidas = false"
+            />
           </div>
           <br />
           <button
@@ -82,10 +93,14 @@
             Adicionales
           </button>
           <div v-if="mostrar_adicionales">
-            <adicionales :selectProduct="selectProduct" :remover="remover" @close="mostrar_adicionales = false"/>
+            <adicionales
+              :selectProduct="selectProduct"
+              :remover="remover"
+              @close="mostrar_adicionales = false"
+            />
           </div>
           <br />
-          <p>¿Desea añadir una nota?</p>
+          <p>¿Añadir nota?</p>
           <textarea v-model="nota_adicional" type="text" />
           <br />
         </div>
@@ -199,25 +214,21 @@ export default {
   border-radius: 0.2em;
   border-style: none;
   outline: none;
-  margin:5px;
+  margin: 5px;
   padding: 8px;
 }
 .pedido_total {
-  background-color:$bg-containers;
+  background-color: $bg-containers;
   opacity: 0.85;
   background-size: cover;
   box-shadow: 0 2px 10px #141414, 0 0 29px $bg-containers inset;
   margin: auto;
-  width: min-content;
-  padding: 16px 40px 0px 0px;
+  width: 400px;
 }
 .contenedor_pedido {
   display: flex;
-  flex-direction: row;
-  margin: auto;
 }
 .resumen {
-  display: block ruby;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
@@ -231,18 +242,18 @@ export default {
   background-size: cover;
 }
 .item {
-  padding: 0em 1em 1em 1em;
+  padding: 2px;
   margin: 0;
 }
 .resumen_pedido {
-  display: block;
-  width: 40%;
-  height: 50%;
+  width: 160px;
+
   margin: 10px;
   padding: 3% 8%;
 }
 .menús {
-  padding: 25px;
+  padding-top: 25px;
+  width: 150px;
   p {
     margin: 10px;
   }
@@ -268,22 +279,9 @@ export default {
 #buton_trash {
   width: 1.4em;
 }
-.div-pedido{
+.div-pedido {
   overflow: scroll;
-  width:250px;
-  height: 330px;
+  width: 190px;
+  height: 250px;
 }
-.div-pedido::-webkit-scrollbar-track{
-background: rgba(0, 0, 0, 0.213);
-border-radius: 4px;
-}
-.div-pedido::-webkit-scrollbar{
-  width:8px;
-  height: 5px;
-}
-.div-pedido::-webkit-scrollbar-thumb{
-background:#f2b23a77;
-border-radius: 4px;
-}
-
 </style>

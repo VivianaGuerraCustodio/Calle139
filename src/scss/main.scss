@@ -13,23 +13,10 @@ body {
 // DECLARACIÓN DE VARIABLES SCSS
 
 $bg-scroll-track: rgba(0, 0, 0, 0.405);
-$bg-scroll-thumb: #dd961262;
+$bg-scroll-thumb: #c7922f98;
 $border-radius-scroll: 4px;
 $bg-containers: #bf9b4db4;
 $bg-containers-resume: #a56f1db4;
-
-html:-webkit-scrollbar-track {
-    background: $bg-scroll-track;
-    border-radius: $border-radius-scroll;
-}
-html::-webkit-scrollbar {
-    width: 8px;
-    height: 5px;
-}
-html::-webkit-scrollbar-thumb {
-    background: $bg-scroll-thumb;
-    border-radius: $border-radius-scroll;
-}
 
 @mixin width-height($width, $height) {
     width: $width;
@@ -48,6 +35,7 @@ textarea {
     outline: none;
     border-style: none;
     margin: 2px;
+    width: 60px;
 }
 
 hr {
@@ -65,15 +53,22 @@ input[value="-"] {
     width: 40px;
     height: 33px;
 }
+html:-webkit-scrollbar-track ,
+.div-pedido::-webkit-scrollbar-track,
 .contenedor_de_pedidos::-webkit-scrollbar-track {
     background: $bg-scroll-track;
     border-radius: $border-radius-scroll;
 }
-.contenedor_de_pedidos::-webkit-scrollbar {
+html::-webkit-scrollbar,
+.div-pedido::-webkit-scrollbar,
+ .contenedor_de_pedidos::-webkit-scrollbar {
     width: 8px;
     height: 5px;
 }
+html::-webkit-scrollbar-thumb,
+.div-pedido::-webkit-scrollbar-thumb ,
 .contenedor_de_pedidos::-webkit-scrollbar-thumb {
     background: $bg-scroll-thumb;
     border-radius: $border-radius-scroll;
 }
+

@@ -46,7 +46,7 @@ export default {
     return {
       items: [
         {
-          name: "Café americano",
+          name: "C.Americano",
           price: 5,
           qtt: ""
         },
@@ -56,7 +56,7 @@ export default {
           qtt: ""
         },
         {
-          name: "Café con leche",
+          name: "C. con leche",
           price: 7,
           qtt: ""
         },
