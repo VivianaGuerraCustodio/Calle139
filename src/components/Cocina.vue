@@ -117,6 +117,8 @@ export default {
   flex-direction: column;
   margin: 1em 4em 1em 4em;
   padding: 1em 2em 1em 2em;
+  height: 270px;
+  overflow: scroll;
 }
 .pedidos_hechos {
   display: flex;

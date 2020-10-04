@@ -273,4 +273,17 @@ export default {
   width:250px;
   height: 330px;
 }
+.div-pedido::-webkit-scrollbar-track{
+background: rgba(0, 0, 0, 0.213);
+border-radius: 4px;
+}
+.div-pedido::-webkit-scrollbar{
+  width:8px;
+  height: 5px;
+}
+.div-pedido::-webkit-scrollbar-thumb{
+background:#f2b23a77;
+border-radius: 4px;
+}
+
 </style>
