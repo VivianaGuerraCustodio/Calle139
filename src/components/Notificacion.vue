@@ -52,8 +52,8 @@ export default {
 .contenedor_general {
   padding: 1em 1em 1em 4em;
   display: inline-block;
-  background-color: #e6b7615d;
-  box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
+  background-color:$bg-containers ;
+  box-shadow: 0 2px 10px #141414, 0 0 29px $bg-containers inset;
   .listado-pendientes {
     @include flex-orientation(flex, column);
     list-style-image: url("~@/assets/images/servir.png");
@@ -70,4 +70,4 @@ export default {
     }
   }
 }
-</style>>
+</style>

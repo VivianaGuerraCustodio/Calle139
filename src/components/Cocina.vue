@@ -96,7 +96,6 @@ export default {
   },
   methods: {
     enviar_salon(pedido) {
-      console.log(pedido);
       db.collection("pedidos")
         .doc(pedido.id)
         .update({
@@ -108,11 +107,12 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss">
+@import "../scss/main.scss";
 .contenedor_de_pedidos {
   display: flex;
-  background-color: #bf9b4db4;
-  box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
+  background-color: $bg-containers;
+  box-shadow: 0 2px 10px #141414, 0 0 29px $bg-containers inset;
   text-align: center;
   flex-direction: column;
   margin: 1em 4em 1em 4em;
@@ -124,8 +124,8 @@ export default {
   display: flex;
   flex-direction: row;
   border-radius: 0.1em;
-  background-color: #a56f1db4;
-  box-shadow: 0 2px 10px #141414, 0 0 29px #ac8236 inset;
+  background-color:  $bg-containers-resume;
+  box-shadow: 0 2px 10px #141414, 0 0 29px $bg-containers-resume inset;
   margin: 1em 4em 1em 4em;
   padding: 1em 2em 1em 2em;
 }

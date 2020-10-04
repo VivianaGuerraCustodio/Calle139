@@ -46,12 +46,12 @@ export default {
     return {
       items: [
         {
-          name: "Simple",
+          name: "H.Simple",
           price: 10,
           qtt: ""
         },
         {
-          name: "Doble",
+          name: "H.Doble",
           price: 15,
           qtt: ""
         },

@@ -3,7 +3,34 @@
     padding: 0;
     font-family: "Lato", sans-serif;
     scroll-behavior: smooth;
+    outline: none;
 }
+body {
+    background: url("../assets/images/fondo1.jpg") top/cover no-repeat fixed;
+    text-align: center;
+}
+
+// DECLARACIÓN DE VARIABLES SCSS
+
+$bg-scroll-track: rgba(0, 0, 0, 0.405);
+$bg-scroll-thumb: #dd961262;
+$border-radius-scroll: 4px;
+$bg-containers: #bf9b4db4;
+$bg-containers-resume: #a56f1db4;
+
+html:-webkit-scrollbar-track {
+    background: $bg-scroll-track;
+    border-radius: $border-radius-scroll;
+}
+html::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+}
+html::-webkit-scrollbar-thumb {
+    background: $bg-scroll-thumb;
+    border-radius: $border-radius-scroll;
+}
+
 @mixin width-height($width, $height) {
     width: $width;
     height: $height;
@@ -12,10 +39,7 @@
     display: $display;
     flex-direction: $flex-direction;
 }
-body {
-    background: url("../assets/images/fondo1.jpg") top/cover no-repeat fixed;
-    text-align: center;
-}
+
 input[type="text"],
 input[type="number"],
 textarea {
@@ -41,28 +65,15 @@ input[value="-"] {
     width: 40px;
     height: 33px;
 }
-
-html:-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.405);
-    border-radius: 4px;
-}
-html::-webkit-scrollbar {
-    width: 8px;
-    height: 5px;
-}
-html::-webkit-scrollbar-thumb {
-    background: #dd961262;
-    border-radius: 4px;
-}
 .contenedor_de_pedidos::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.405);
-    border-radius: 4px;
+    background: $bg-scroll-track;
+    border-radius: $border-radius-scroll;
 }
 .contenedor_de_pedidos::-webkit-scrollbar {
     width: 8px;
     height: 5px;
 }
 .contenedor_de_pedidos::-webkit-scrollbar-thumb {
-    background: #dd961262;
-    border-radius: 4px;
+    background: $bg-scroll-thumb;
+    border-radius: $border-radius-scroll;
 }

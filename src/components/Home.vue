@@ -51,8 +51,8 @@ export default {
 @import "../scss/main.scss";
 .contenedor {
   display: flex;
-  background-color: #bf9b4db4;
-  box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
+  background-color: $bg-containers;
+  box-shadow: 0 2px 10px #141414, 0 0 29px $bg-containers inset;
   /* text-align: center; */
   /* justify-content: center; */
   flex-direction: column;
@@ -72,18 +72,6 @@ export default {
   .btn-row {
     display: flex;
     flex-direction: row;
-  }
-  .change-view {
-    background-image: url("~@/assets/images/brochas.png");
-    background-color: transparent;
-    border: none;
-    font-size: 17px;
-    margin-top: 0.5em;
-    width: 128px;
-    height: 31px;
-    background-size: cover;
-    opacity: 0.9;
-    color: darkgrey;
   }
   .logo {
     width: 240px;

@@ -56,12 +56,12 @@ export default {
           qtt: ""
         },
         {
-          name: "Bebida/gaseosa 500ml",
+          name: "Gaseosa 500ml",
           price: 7,
           qtt: ""
         },
         {
-          name: "Bebida/gaseosa 750ml",
+          name: "Gaseosa 750ml",
           price: 10,
           qtt: ""
         }

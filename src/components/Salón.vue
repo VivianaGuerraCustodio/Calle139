@@ -203,10 +203,10 @@ export default {
   padding: 8px;
 }
 .pedido_total {
-  background-color: #bf9b4db4;
+  background-color:$bg-containers;
   opacity: 0.85;
   background-size: cover;
-  box-shadow: 0 2px 10px #141414, 0 0 29px #bf974d inset;
+  box-shadow: 0 2px 10px #141414, 0 0 29px $bg-containers inset;
   margin: auto;
   width: min-content;
   padding: 16px 40px 0px 0px;
