@@ -50,7 +50,7 @@
               Desayuno
             </button>
             <div v-if="mostrar_desayuno">
-              <desayuno :selectProduct="selectProduct" :remover="remover" />
+              <desayuno :selectProduct="selectProduct" :remover="remover" @close="mostrar_desayuno = false"/>
             </div>
             <br />
           </div>
@@ -61,7 +61,7 @@
             Durante el día
           </button>
           <div v-if="mostrar_durante">
-            <hamburguesas :selectProduct="selectProduct" :remover="remover" />
+            <hamburguesas :selectProduct="selectProduct" :remover="remover" @close="mostrar_durante = false" />
           </div>
           <br />
           <button
@@ -71,7 +71,7 @@
             Bebidas
           </button>
           <div v-if="mostrar_bebidas">
-            <bebidas :selectProduct="selectProduct" :remover="remover" />
+            <bebidas :selectProduct="selectProduct" :remover="remover" @close="mostrar_bebidas = false"/>
           </div>
           <br />
           <button
@@ -82,7 +82,7 @@
             Adicionales
           </button>
           <div v-if="mostrar_adicionales">
-            <adicionales :selectProduct="selectProduct" :remover="remover" />
+            <adicionales :selectProduct="selectProduct" :remover="remover" @close="mostrar_adicionales = false"/>
           </div>
           <br />
           <p>¿Desea añadir una nota?</p>
@@ -199,6 +199,7 @@ export default {
   border-radius: 0.2em;
   border-style: none;
   outline: none;
+  margin:5px;
   padding: 8px;
 }
 .pedido_total {
