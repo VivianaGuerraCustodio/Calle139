@@ -1,0 +1,66 @@
+{
+    "Desayuno": {
+        "C.Americano": {
+            "price": 5,
+            "qtt": ""
+        },
+        "C.con leche": {
+            "price": 7,
+            "qtt": ""
+        },
+        "Sándwich jamón y queso": {
+            "price": 10,
+            "qtt": ""
+        },
+        "Jugo de frutas": {
+            "price": 7,
+            "qtt": ""
+        }
+    },
+    "Adicionales": {
+        "Queso": {
+            "price": 1,
+            "qtt": ""
+        },
+        "Huevo": {
+            "price": 1,
+            "qtt": ""
+        }
+    },
+    "Bebidas": {
+        "Agua 500ml": {
+            "price": 5,
+            "qtt": ""
+        },
+        "Agua 750ml": {
+            "price": 7,
+            "qtt": ""
+        },
+        "Gaseosa 500ml": {
+            "price": 7,
+            "qtt": ""
+        },
+        "Gaseosa 750ml": {
+            "price": 10,
+            "qtt": ""
+        }
+    },
+    "Hamburguesas": {
+        "H.Simple": {
+            "price": 10,
+            "qtt": ""
+        },
+        "H.Doble": {
+            "price": 15,
+            "qtt": ""
+        },
+        "Papas fritas": {
+            "price": 5,
+            "qtt": ""
+        },
+        "Aros de cebolla": {
+            "price": 5,
+            "qtt": ""
+        }
+    }
+}
