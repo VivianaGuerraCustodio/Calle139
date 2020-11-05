@@ -3,13 +3,10 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-header">
-            <slot name="header">
-              Menú desayuno
+          <div class="modal-header">            
               <button class="modal-default-button" @click="$emit('close')">
                 <img src="@/assets/images/x.png" alt="close" />
-              </button>
-            </slot>
+              </button>       
           </div>
           <div class="modal-body">
             <slot name="body">
@@ -100,10 +97,7 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
+
 
 .modal-body {
   display: flex;

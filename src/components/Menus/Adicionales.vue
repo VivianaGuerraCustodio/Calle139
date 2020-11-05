@@ -4,12 +4,11 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
-            <slot name="header">
-              Menú desayuno
+             
               <button class="modal-default-button" @click="$emit('close')">
                 <img src="@/assets/images/x.png" alt="close" />
               </button>
-            </slot>
+            
           </div>
           <div class="modal-body">
             <slot name="body">
